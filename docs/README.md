@@ -10,3 +10,4 @@ Orbs are packages of reusable CircleCI configuration. They allow you to create e
 1. [Parameters](parameters.md)
 1. [Jobs](jobs.md)
 1. [Executors](executors.md)
+1. [Understanding the Design of Orbs](design-approach.md)
