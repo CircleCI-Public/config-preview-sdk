@@ -20,6 +20,48 @@ As we prepare to launch a set of new configuration features we appreciate the op
 4. **Reusable Executors** - Executors define the environment and other settings for executing jobs. They allow you to reuse configuration of your execution environment across jobs.
 5. **Orbs** - Orbs are packages of CircleCI configuration that can be shared across projects. Orbs allow you to make a single bundle of jobs, commands, and executors that can reference each other and can be imported into a CircleCI build configuration and invoked in their own namespace. Orbs are registered with CircleCI, with revisions expressed using the [semver](https://semver.org/) pattern.
 
+## Basic Example
+To use an orb in your build configuration it might look something like:
+
+```
+version: 2
+import:
+  s3: circleci/aws-tools@1.4.2
+
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - s3/deploy:
+          from: "somepath/somefile"
+          to: $S3BUCKETURI
+          overwrite: "false"
+```
+
+The above imports the `circleci/aws-tools` orb at revision 1.4.2, then invokes a command called `deploy` from that orb, passing in three parameters.
+
+The code in the orb for the `deploy` command might look like:
+
+```
+description: "A simple encapsulation of doing an s3 sync"
+parameters:
+  from:
+    type: string
+    description: A directory path local to the job to deploy to S3
+  to:
+    type: string
+    description: A URI to an S3 bucket
+  overwrite:
+    type: boolean
+    default: "false"
+    description: Boolean value for whether to overwrite the files
+steps:
+  - run:
+      name: Deploy to S3
+      command: "aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>"
+```
+
 ## Getting Started
 Please look over the [docs](/docs/) on orbs to understand how they are authored. To develop your first orb we recommend creating a separate repository for it, though that is not strictly necessary.
 
