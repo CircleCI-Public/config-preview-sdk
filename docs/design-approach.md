@@ -14,8 +14,8 @@
 ## Design choices made in Orbs
 1. **Stick with YAML:** We considered providing a DSL in a programming language like javascript or python to build the data structures of configuration dynamnically. We chose to first build a YAML-based packaging mechanism because:
     * Our customers and employees already know it, so it’s adds the least friction and cognitive load to adopt.
-    * It adheres to our general principle to be deterministic and declarative, and no other data format was deemed better enough to switch.
-    * It’s self-documenting.
+    * It is a widely adopted data format that allow us to provide a deterministic and declarative DSL. No other data format was deemed better enough to switch.
+    * Using a data format instead of a programming language means our configuration can more easily be self-documenting and statically processed.
 1. **Transparency:** If you can execute an orb you can see the source of that orb. Orb is more akin to configuration you would otherwise copy and paste than it is like a piece of your core software - Orbs are part of your build process, so you should be able to see what they do if can execute them.
 1. **First-class Metadata:** We allow a `description` key as part of the structure of orbs, so it's easier to generate documentation or read through the code without having extra-structural comments.
 1. **Semantic Versioning and Locking:** We want orb users to never have things changes out from under them but also allow orb authors to continue adding features and fixes to orbs. We choose to enforce a strict format for [semver](https://semver.org/) on all published revisions. When importing we allow an orb user to lock a specific revision or choose to use the latest and assume the risk of breakage.
