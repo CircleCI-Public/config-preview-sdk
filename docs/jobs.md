@@ -44,7 +44,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - hello-orb/sayhello
+      - hello-orb/sayhello:
           saywhat: Everyone
 ```
 

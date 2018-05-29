@@ -8,7 +8,7 @@ As we prepare to launch a set of new configuration features we appreciate the op
 ## What problems are we trying to solve?
 1. **Better [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) support:** CircleCI 2.0 original configuration was highly deterministic but also highly verbose and forced too much boiler plate or repeated code blocks. We aim to provide better first-class semantics to dramatically improve the DRY aspects of CircleCI configuration.
 
-2. **Code Reuse across projects:** We hear from a lot of customers that they want better ways to share configuration across projects. This repo introduces Orbs, reusable packages of parameterizable CircleCI configuraiton elements.
+2. **Code Reuse across projects:** We hear from a lot of customers that they want better ways to share configuration across projects. This repo introduces Orbs, reusable packages of parameterizable CircleCI configuration elements.
 
 3. **Easier path to common configuration:** We hear often that people want more off-the-shelf options to get their first useful builds flowing, especially for common platforms like Rails, Node, and they want better encapsulation of common tasks like deploying to Heroku or pushing to an S3 bucket.
 
