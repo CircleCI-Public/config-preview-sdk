@@ -67,7 +67,7 @@ steps:
 There are two ways to stay up-to-date with changes we make to our new configuration features:
 
 1. Watch [this repo](https://github.com/CircleCI-Public/config-preview-sdk) on GitHub 
-2. Get email updates from us: [https://circle.ci/2HbCmKq](https://circle.ci/2HbCmKq)
+2. Get email updates from us about the configuration preview: [https://circle.ci/2HbCmKq](https://circle.ci/2HbCmKq)
 
 ## Getting Started
 Please look over the [docs](/docs/) on orbs to understand how they are authored. To develop your first orb we recommend creating a separate repository for it, though that is not strictly necessary.
