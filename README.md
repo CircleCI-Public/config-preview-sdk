@@ -23,7 +23,7 @@ As we prepare to launch a set of new configuration features we appreciate the op
 ## Basic Example
 To use an orb in your build configuration it might look something like:
 
-```
+```yaml
 version: 2
 import:
   s3: circleci/aws-tools@1.4.2
@@ -43,7 +43,7 @@ The above imports the `circleci/aws-tools` orb at revision 1.4.2, then invokes a
 
 The code in the orb for the `deploy` command might look like:
 
-```
+```yaml
 description: "A simple encapsulation of doing an s3 sync"
 parameters:
   from:
@@ -66,11 +66,10 @@ steps:
 ## Staying Informed
 There are two ways to stay up-to-date with changes we make to our new configuration features:
 
-1. Watch [this repo](https://github.com/CircleCI-Public/config-preview-sdk) on GitHub 
+1. Watch [this repo](https://github.com/CircleCI-Public/config-preview-sdk) on GitHub
 2. Get email updates from us about the configuration preview: [https://circle.ci/2HbCmKq](https://circle.ci/2HbCmKq)
 
 ## Getting Started
 Please look over the [docs](/docs/) on orbs to understand how they are authored. To develop your first orb we recommend creating a separate repository for it, though that is not strictly necessary.
 
 We will soon post instructions for downloading the tooling to try writing your own orbs.
-
