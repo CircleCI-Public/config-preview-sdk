@@ -31,7 +31,7 @@ A parameter can have the following keys as immediate children:
 | Key Name    | Description                                                                                   | Default value |
 |-------------|-----------------------------------------------------------------------------------------------|---------------|
 | description | Optional. Used to generate documentation for your orb.                                        | N/A           |
-| type        | Required. Currently "string" and "boolean. are supported                                               | N/A           |
+| type        | Required. Currently "string", "boolean", and "steps". are supported                           | N/A           |
 | default     | The default value for the parameter. If not present, the parameter is implied to be required. | N/A           |
 
 ## Parameter types
@@ -75,3 +75,42 @@ Boolean parameter evaluation is based on the [values specified in YAML 1.1][http
 * true: `y` `yes` `true` `on`
 * false: `n` `no` `false` `off`
 * also capitalized or uppercase versions of any of these
+
+### steps
+
+Used when you have a job or command that wants to mix predefined and user defined steps. When passed in to a command or job invocation, the steps are always defined as an array, even if only one step is provided.
+
+```yaml
+commands:
+  run-tests:
+    parameters:
+      after-deps:
+        description: "Steps that will be executed after depenencies are installed, but before tests are run"
+        type: steps
+        default: []
+    steps:
+    - run: make deps
+    - << parameters.after-deps >>
+    - run: make test
+```
+
+Steps are expanded into their parent array.
+
+```yaml
+jobs:
+  build:
+    - run-tests:
+        after-deps:
+          - run: echo "I installed the dependencies"
+          - run: echo "And now I'm going to run the tests"
+```
+
+will become:
+
+```yaml
+steps:
+  - run: make deps
+  - run: echo "I installed the dependencies"
+  - run: echo "And now I'm going to run the tests"
+  - run: make test
+```
