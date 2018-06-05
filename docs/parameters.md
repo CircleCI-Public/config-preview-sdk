@@ -78,14 +78,14 @@ Boolean parameter evaluation is based on the [values specified in YAML 1.1][http
 
 ### steps
 
-Used when you have a job or command that wants to mix predefined and user defined steps. When passed in to a command or job invocation, the steps are always defined as an array, even if only one step is provided.
+Used when you have a job or command that wants to mix predefined and user defined steps. When passed in to a command or job invocation, the steps passed as parameters are always defined as an array, even if only one step is provided.
 
 ```yaml
 commands:
   run-tests:
     parameters:
       after-deps:
-        description: "Steps that will be executed after depenencies are installed, but before tests are run"
+        description: "Steps that will be executed after dependencies are installed, but before tests are run"
         type: steps
         default: []
     steps:
@@ -94,7 +94,7 @@ commands:
     - run: make test
 ```
 
-Steps are expanded into their parent array.
+Steps passed as parameters are expanded and spliced into the array of existing steps.
 
 ```yaml
 jobs:
