@@ -151,10 +151,22 @@ workflows:
 
 ### Pre and Post Steps
 
-Every job accepts two special arguments: `pre-steps` and `post-steps`. 
-Users can invoke a job with one or both of these arguments. Steps under `pre-steps`
+Every job accepts two special arguments: `pre-steps` and `post-steps`.
+Users can optionally invoke a job with one or both of these arguments. Steps under `pre-steps`
 are executed before any of the other steps in the job, and the steps under
 `post-steps` are executed after all of the other steps.
 
-For this reason, the parameter names `pre-steps` and `post-steps` are reserved 
-and may not be redefined by a job author. See [Pre and Post Steps](pre-and-post-steps.md) for more.
+For this reason, the parameter names `pre-steps` and `post-steps` are reserved
+and may not be redefined by a job author. For example, the following job
+definition is invalid:
+
+```yaml
+jobs:
+  foo:
+    parameters:
+      pre-steps:    # invalid: pre-steps is a reserved parameter name
+        type: steps
+        default: []
+```
+
+See [Pre and Post Steps](pre-and-post-steps.md) for more.
