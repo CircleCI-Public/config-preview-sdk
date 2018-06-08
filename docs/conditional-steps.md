@@ -16,46 +16,42 @@ Command.
 A conditional step consists of a step with the key `when` or `unless`. The
 subkey `steps` defines the steps to run if the condition under subkey
 `condition` is met. Currently the `condition` is a single value that evaluates
-to `true` or `false`.
+to `true` or `false`--again, at the time the config is processed, which means
+all conditions must be resolvable at this time..
 
-### Conditional steps in an orb
+### Example
 
 ```
 # inside orb.yml for orb `myorb`
-
+name: myorb
 jobs:
   myjob:
     parameters:
       preinstall-foo:
         type: boolean
         default: false
-      foo-download-url:
-        type: string
-        default: ""
-    executor: some-executor
+    machine: true
     steps:
-      - checkout
+      - run: echo "preinstall is << parameters.preinstall-foo >>"
       - when:
-        condition: << parameters.preinstall-foo >>
-        steps:
-          - install-foo:
-            download-url: << parameters.foo-download-url >>
+          condition: << parameters.preinstall-foo >>
+          steps:
+            - run: echo "preinstall"
       - unless:
-        condition: << parameters.preinstall-foo >>
-        steps:
-          - compile-foo
-      - verify-foo-version
-      - build
-      - test
+          condition: << parameters.preinstall-foo >>
+          steps:
+            - run: echo "don't preinstall"
 ```
 
 ```
 # inside user's build.yml
+version: 2
 workflows:
   workflow:
     jobs:
       - myorb/myjob:
+          preinstall-foo: false
+      - myorb/myjob:
           preinstall-foo: true
-          foo-download-url: https://example.com/foo.sh
 ```
 
