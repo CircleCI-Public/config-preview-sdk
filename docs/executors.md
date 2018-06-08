@@ -49,6 +49,7 @@ Executors in configuration were designed to enable:
 2. Allowing an orb to define the executor used but all of its commands, allowing you to use the commands of that orb in the execution environment defined by the orb's author.
 
 ### Example - using an executor declared in config.yml in many jobs
+
 Imagine you have several jobs that you need to run in the same Docker image and working directory with a common set of environment variables. Each job has distinct steps, but should run in the same environment. You have three options to accomplish this:
 
 1. Declare each job with repetitive `docker` and `working_directory` keys.
@@ -110,30 +111,28 @@ jobs:
       - run: echo "how are ya?"
 ```
 
-## Declaring and using executors in an orbs.
-In orbs you can declare individual executors as files in an `executors` folder of the orb. The file name of your executor is the executor name.
+You can also define executors in an `orb.yml` file under the `executors` key.
+Users of your orb can invoke that executor, namespaced with your orb name. For
+example, `foo-orb` could define the `bar` executor:
 
-**Directory structure**
-```
-- orbs
-  - foo-orb
-    - executors
-      - bar.yml
-  - baz-orb
-    - executors
-      - bar.yml
+```yaml
+# orb.yml
+name: foo-orb
+executors:
+  bar:
+    machine: true
+    environment:
+      RUN_TESTS: foobar
 ```
 
-**Calling the above in your build config**
-```
+A user could use this executor from their configuration file with:
+
+```yaml
+# config.yml
 jobs:
-  some_job:
+  some-job:
     executor: foo-orb/bar  # prefixed executor
-  some_other_job
-    executor:
-      name: baz-orb/bar    # prefixed executor
 ```
-Note that `foo-orb/bar` and `baz-orb/bar` are different executors. They both have the local name `bar`, but are independent executors living in different orbs.
 
 ## Overriding keys when invoking an executor
 When invoking an executor in a `job` any keys in the job itself will override those of the executor invoked. For instance, if your job declares a `docker` stanza, it will be used, in its entirety, instead of the one in your executor.

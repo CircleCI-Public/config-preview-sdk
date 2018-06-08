@@ -44,22 +44,24 @@ The above imports the `circleci/aws-tools` orb at revision 1.4.2, then invokes a
 The code in the orb for the `deploy` command might look like:
 
 ```yaml
-description: "A simple encapsulation of doing an s3 sync"
-parameters:
-  from:
-    type: string
-    description: A directory path local to the job to deploy to S3
-  to:
-    type: string
-    description: A URI to an S3 bucket
-  overwrite:
-    type: boolean
-    default: "false"
-    description: Boolean value for whether to overwrite the files
-steps:
-  - run:
-      name: Deploy to S3
-      command: "aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>"
+commands:
+  deploy:
+    description: "A simple encapsulation of doing an s3 sync"
+    parameters:
+      from:
+        type: string
+        description: A directory path local to the job to deploy to S3
+      to:
+        type: string
+        description: A URI to an S3 bucket
+      overwrite:
+        type: boolean
+        default: "false"
+        description: Boolean value for whether to overwrite the files
+    steps:
+      - run:
+          name: Deploy to S3
+          command: "aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>"
 ```
 
 

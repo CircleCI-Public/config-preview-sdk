@@ -3,7 +3,8 @@ Jobs are sets of steps run in a given executor.
 
 ## Job naming and organization
 
-Jobs are defined in your build configuration or in an orb. In an orb, a job's file name becomes its name. In your build configuration, job names are defined by the map under the `jobs` key in build config.
+Jobs are defined in your build configuration or in an orb. Job names are defined
+in a map under the `jobs` key in build config or an `orb.yml`.
 
 Like most elements, jobs can contain an optional but highly recommended `description`.
 
@@ -49,25 +50,27 @@ workflows:
 ```
 
 ```yaml
-# .circleci/orbs/hello-orb/jobs/sayhello.yml
-parameters:
-  saywhat:
-    description: "To whom shall we say hello?"
-    default: "World"
-    type: string
-machine: true
-steps:
-  - say:
-      saywhat: "<< parameters.saywhat >>"
-```
+# .circleci/orbs/hello-orb/orb.yml
+name: hello-orb
 
-```yaml
-# .circleci/orbs/hello-orb/commands/say.yml
-parameters:
+jobs:
+  sayhello:
+    parameters:
+      saywhat:
+        description: "To whom shall we say hello?"
+        default: "World"
+        type: string
+    machine: true
+    steps:
+      - say:
+          saywhat: "<< parameters.saywhat >>"
+commands:
   saywhat:
-    type: string
-steps:
-  - echo "<< parameters.saywhat >>"
+    parameters:
+      saywhat:
+        type: string
+    steps:
+      - echo "<< parameters.saywhat >>"
 ```
 
 ## Parameter scope
