@@ -99,6 +99,8 @@ Steps passed as parameters are expanded and spliced into the array of existing s
 ```yaml
 jobs:
   build:
+    machine: true
+    steps:
     - run-tests:
         after-deps:
           - run: echo "I installed the dependencies"
