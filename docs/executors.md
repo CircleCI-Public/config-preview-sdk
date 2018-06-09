@@ -117,7 +117,6 @@ example, `foo-orb` could define the `bar` executor:
 
 ```yaml
 # orb.yml
-name: foo-orb
 executors:
   bar:
     machine: true
@@ -125,14 +124,28 @@ executors:
       RUN_TESTS: foobar
 ```
 
-A user could use this executor from their configuration file with:
+`baz-orb` could define the `bar` executor too:
+```yaml
+executors:
+  bar:
+    docker:
+      - image: clojure:lein-2.8.1
+```
+
+A user could use either executor from their configuration file with:
 
 ```yaml
 # config.yml
 jobs:
   some-job:
     executor: foo-orb/bar  # prefixed executor
+  some-other-job:
+    executor: baz-orb/bar  # prefixed executor
 ```
+
+Note that `foo-orb/bar` and `baz-orb/bar` are different executors. They
+both have the local name `bar` but are independent executors living in
+different orbs.
 
 ## Overriding keys when invoking an executor
 When invoking an executor in a `job` any keys in the job itself will override those of the executor invoked. For instance, if your job declares a `docker` stanza, it will be used, in its entirety, instead of the one in your executor.

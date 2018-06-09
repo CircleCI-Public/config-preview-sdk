@@ -51,8 +51,6 @@ workflows:
 
 ```yaml
 # .circleci/orbs/hello-orb/orb.yml
-name: hello-orb
-
 jobs:
   sayhello:
     parameters:

@@ -60,7 +60,6 @@ The following is a an example of an "s3tools" orb defining a command called "s3s
 
 ```yaml
 # orb.yml
-name: s3tools
 commands:
   s3sync:
     description: "A simple encapsultion of doing an s3 sync"
