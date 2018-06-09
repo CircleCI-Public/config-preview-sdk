@@ -1,6 +1,6 @@
 # Orb Structure
 
-Each Orb is packaged as a single file named `orb.yml`. Each Orb also has its 
+Each Orb is packaged as a single file. Each Orb also has its 
 own namespace to use when invoking its elements. Orbs are authored with similar 
 YAML syntax to the base CircleCI build configuration.
 
@@ -14,7 +14,6 @@ Orbs are composed of one or more of the following elements, each of which repres
 An example orb:
 ```
 # .circleci/orbs/foo/orb.yml
-name: foo
 commands:
   echo:
     steps:
