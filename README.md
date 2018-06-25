@@ -75,3 +75,6 @@ There are two ways to stay up-to-date with changes we make to our new configurat
 Please look over the [docs](/docs/) on orbs to understand how they are authored. To develop your first orb we recommend creating a separate repository for it, though that is not strictly necessary.
 
 We will soon post instructions for downloading the tooling to try writing your own orbs.
+
+### Command line interface (CLI)
+Follow the directions for [Getting Started](https://github.com/CircleCI-Public/circleci-cli/blob/master/README.md#getting-started) in the `circleci-cli` README.
