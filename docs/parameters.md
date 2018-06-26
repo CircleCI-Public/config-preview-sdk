@@ -1,19 +1,20 @@
 # Using parameters in CircleCI configuration elements
-Many config elements can be authored to be invocable in your `config.yml` file with specified parameters. Parameters are declared by name as the keys in a map that are all immediate children of the `parameters` key under a job, command, or executor. For instance, the following shows declaring a parameter `foo` in the definition of a command:
+Many config elements can be authored to be invocable in your `config.yml` file with specified parameters. Parameters are declared by name as the keys in a map that are all immediate children of the `parameters` key under a job, command, or executor. For instance, the following shows declaring a parameter `foo` in the definition of a command `bar`:
 
 ```yaml
-command:
-  parameters:
-    foo:
-      description: this parameter is used for a thing
-      default: "I'm a default value"
-      type: string
+commands:
+  bar:
+    parameters:
+      foo:
+        description: this parameter is used for a thing
+        default: "I'm a default value"
+        type: string
 
-  steps:
-  - echo '<< parameters.foo >>'
+    steps:
+      - echo '<< parameters.foo >>'
 ```
 
-In the above example a value for the parameter `foo` can be passed when invoking the command. For instance, if the above job were in a command called `bar` passing the parameter `foo` would look something like:
+In the above example a value for the parameter `foo` can be passed when invoking the command. For instance, passing the parameter `foo` would look something like:
 
 ```yaml
 jobs:
@@ -36,9 +37,9 @@ A parameter can have the following keys as immediate children:
 
 ## Parameter types
 
-### string
+### String
 
-basic string parameters
+Basic string parameters
 
 ```yaml
 commands:
@@ -49,14 +50,14 @@ commands:
         type: string
         default: docs
     steps:
-    - cp *.md << destination >>
+      - cp *.md << destination >>
 ```
 
-Strings should be quoted if they would otherwise represent another type (such as boolean or number) or if they contain characters that have special meaning in yaml. Otherwise quotes are optional.
+Strings should be quoted if they would otherwise represent another type (such as boolean or number) or if they contain characters that have special meaning in yaml. In all other instances, quotes are optional.
 
-### boolean
+### Boolean
 
-boolean parameters are useful for conditionals
+Boolean parameters are useful for conditionals:
 
 ```yaml
 commands:
@@ -67,18 +68,19 @@ commands:
         type: boolean
         default: false
     steps:
-    - ls <<# all >> -a <</ all >>
+      - ls <<# all >> -a <</ all >>
 ```
 
 Boolean parameter evaluation is based on the [values specified in YAML 1.1][http://yaml.org/type/bool.html]:
 
 * true: `y` `yes` `true` `on`
 * false: `n` `no` `false` `off`
-* also capitalized or uppercase versions of any of these
 
-### steps
+Capitalized and uppercase versions of the above values are also valid.
 
-Used when you have a job or command that wants to mix predefined and user defined steps. When passed in to a command or job invocation, the steps passed as parameters are always defined as an array, even if only one step is provided.
+### Steps
+
+Used when you have a job or command that needs to mix predefined and user-defined steps. When passed in to a command or job invocation, the steps passed as parameters are always defined as an array, even if only one step is provided.
 
 ```yaml
 commands:
@@ -94,7 +96,7 @@ commands:
     - run: make test
 ```
 
-Steps passed as parameters are expanded and spliced into the array of existing steps.
+Steps passed as parameters are expanded and spliced into the array of existing steps. For example,
 
 ```yaml
 jobs:
@@ -103,7 +105,7 @@ jobs:
     steps:
     - run-tests:
         after-deps:
-          - run: echo "I installed the dependencies"
+          - run: echo "The dependencies are installed"
           - run: echo "And now I'm going to run the tests"
 ```
 
@@ -112,7 +114,7 @@ will become:
 ```yaml
 steps:
   - run: make deps
-  - run: echo "I installed the dependencies"
+  - run: echo "The dependencies are installed"
   - run: echo "And now I'm going to run the tests"
   - run: make test
 ```
