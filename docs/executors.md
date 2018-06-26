@@ -6,9 +6,9 @@
 - [Using parameters in executors](#using-parameters-in-executors)
 
 ## What _is_ an executor?
-Executors define the environment in which the steps of a job will be run. When declaring a `job` in CirlceCI configuration you tell it what type of execution environment to run in (`docker`, `machine`, `macos`. etc.) and other parameters of that environment such as environment variables to populate, which shell to use, what size `resource_class` to use, and so on. Executor declarations in config outside of jobs can be used by all jobs in the scope of that declaration, allowing you to reuse a single executor definition across multiple jobs.
+Executors define the environment in which the steps of a job will be run. When declaring a `job` in CircleCI configuration, you define the type of execution environment (`docker`, `machine`, `macos`. etc.) to run in, as well as any other parameters of that environment including: environment variables to populate, which shell to use, what size `resource_class` to use, etc. Executor declarations in config outside of `jobs` can be used by all jobs in the scope of that declaration, allowing you to reuse a single executor definition across multiple jobs.
 
-An executor definition includes the subset of the children keys of a `job` declaration related to setting the environment for a job to execute. That subset is one or more of the following keys:
+An executor definition includes the subset of the children keys of a `job` declaration related to setting the environment for a job to execute. This means it does _not_ include `steps`. That subset is one or more of the following keys:
 
 - `docker` or `machine` or `macos` 
 - `environment`
@@ -29,7 +29,7 @@ jobs:
   my-job:
     executor: my-executor
     steps:
-      ...
+      - run: echo outside the executor
 ```
 
 In the above example the executor `my-executor` is passed as the single value of the key `executor`. Alternatively, you can pass `my-executor` as the value of a `name` key under `executor` -- this method is primarily employed when passing parameters to executor invocations (see below):
@@ -40,13 +40,13 @@ jobs:
     executor:
       name: my-executor
     steps:
-      ...
+      - run: echo outside the executor
 ```
 
 ## Common uses of executors
 Executors in configuration were designed to enable:
 1. Reusing a defined execution environment in multiple jobs in _config.yml_.
-2. Allowing an orb to define the executor used but all of its commands, allowing you to use the commands of that orb in the execution environment defined by the orb's author.
+2. Allowing an orb to define the executor used by all of its commands. This allows users to execute the commands of that orb in the execution environment defined by the orb's author.
 
 ### Example - using an executor declared in config.yml in many jobs
 
@@ -111,12 +111,11 @@ jobs:
       - run: echo "how are ya?"
 ```
 
-You can also define executors in an `orb.yml` file under the `executors` key.
-Users of your orb can invoke that executor, namespaced with your orb name. For
-example, `foo-orb` could define the `bar` executor:
+You can also refer to executors other orbs. In fact, users of your orb can invoke its executors, 
+namespaced with your orb name. For example, `foo-orb` could define the `bar` executor:
 
 ```yaml
-# orb.yml
+# yaml from foo-orb
 executors:
   bar:
     machine: true
@@ -126,6 +125,7 @@ executors:
 
 `baz-orb` could define the `bar` executor too:
 ```yaml
+# yaml from bar-orb
 executors:
   bar:
     docker:
@@ -150,7 +150,7 @@ different orbs.
 ## Overriding keys when invoking an executor
 When invoking an executor in a `job` any keys in the job itself will override those of the executor invoked. For instance, if your job declares a `docker` stanza, it will be used, in its entirety, instead of the one in your executor.
 
-There is **one exception** to this rule: `environment` variable maps are additive. If an `executor` has one of the same `environment` variables as the `job`, the `job`'s value will win. For example, if you had the following build configuration:
+There is **one exception** to this rule: `environment` variable maps are additive. If an `executor` has one of the same `environment` variables as the `job`, the `job`'s value will win. For example, if you had the following orb configuration:
 
 ```
 executors:
@@ -192,7 +192,7 @@ jobs:
 ```
 
 ## Using parameters in executors
-If you'd like to use parameters in executors, define the parameters under the given executor. Then, when you invoke the executor pass the keys of the parameters as a map of keys under the `executor:` declaration, each of which has the value of the parameter that you would like to pass in.
+If you'd like to use parameters in executors, define the parameters under the given executor. When you invoke the executor, pass the keys of the parameters as a map of keys under the `executor:` declaration, each of which has the value of the parameter that you would like to pass in.
 
 Parameters in executors can be of the type `string` or `boolean`. Default values can be provided with the optional `default` key.
 
