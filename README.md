@@ -12,7 +12,7 @@ As we prepare to launch a set of new configuration features we appreciate the op
 
 3. **Easier path to common configuration:** We hear often that people want more off-the-shelf options to get their first useful builds flowing, especially for common platforms like Rails, Node, and they want better encapsulation of common tasks like deploying to Heroku or pushing to an S3 bucket.
 
-## Major Features Previewed Here
+## Major features previewed here
 
 1. **Configuration processing** - We are refactoring our build ingestion system to pre-process configuration before running workflows or jobs. Centralizing configuration processing will allow us to provide much better and much earlier feedback on problems with the configuration itself, such as syntax errors or malformed semantics. This will also allow us to add various configuration "sugaring" techniques and make reusable, parameterizable configuration a reality.
 2. **Reusable Custom Commands** - Commands are parameterized sets of steps you declare that can be invoked as a step in a job. This will allow you to reduce repetitiveness in your code and encapsulate common set of steps, including the ability to call them with different parameters.
@@ -20,7 +20,7 @@ As we prepare to launch a set of new configuration features we appreciate the op
 4. **Reusable Executors** - Executors define the environment and other settings for executing jobs. They allow you to reuse configuration of your execution environment across jobs.
 5. **Orbs** - Orbs are packages of CircleCI configuration that can be shared across projects. Orbs allow you to make a single bundle of jobs, commands, and executors that can reference each other and can be imported into a CircleCI build configuration and invoked in their own namespace. Orbs are registered with CircleCI, with revisions expressed using the [semver](https://semver.org/) pattern.
 
-## Basic Example
+## Basic example
 To use an orb in your build configuration it might look something like:
 
 ```yaml
@@ -65,13 +65,13 @@ commands:
 ```
 
 
-## Staying Informed
+## Staying informed
 There are two ways to stay up-to-date with changes we make to our new configuration features:
 
 1. Watch [this repo](https://github.com/CircleCI-Public/config-preview-sdk) on GitHub
 2. Get email updates from us about the configuration preview: [https://circle.ci/2HbCmKq](https://circle.ci/2HbCmKq)
 
-## Getting Started
+## Getting started
 Please look over the [docs](/docs/) on orbs to understand how they are authored. To develop your first orb we recommend creating a separate repository for it, though that is not strictly necessary.
 
 We will soon post instructions for downloading the tooling to try writing your own orbs.

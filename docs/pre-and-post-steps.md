@@ -1,4 +1,4 @@
-# Pre and Post Steps
+# Pre and post steps
 
 All jobs accept two special arguments of type `steps`: `pre-steps` and
 `post-steps`. If an orb user invokes a job with one or both of these arguments,

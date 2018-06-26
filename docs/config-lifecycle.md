@@ -1,4 +1,4 @@
-# Build Config Lifecycle
+# Build config lifecycle
 Configuration in CircleCI is sent to the platform as a valid YAML string that should both adhere to the schema and be semantically sound. Checks on the shape of your config will be conducted prior to processing your build. Once your build configuration hits our system, it will follow the path detailed below.
 
 ## Lifecycle of configuration in a build

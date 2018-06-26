@@ -1,4 +1,4 @@
-# Orb Structure
+# Orb structure
 
 Each Orb is packaged as a single file. Each Orb also has its 
 own namespace to use when invoking its elements. Orbs are authored with similar 
@@ -37,7 +37,7 @@ Our sample orb above has a single command name `echo` and a single job named `he
 
 Orb, command, job, executor, and parameter names can only contain lowercase letters a-z, digits, and _ and -, and must start with a letter.
 
-### Scoping Considerations in Orb Invocation
+### Scoping considerations in Orb invocation
 
 An orb `foo` effectively has a namespace called `foo` for use in your build configuration, and everything directly inside an orb is considered local to that orb.
 

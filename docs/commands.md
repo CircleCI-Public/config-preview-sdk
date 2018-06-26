@@ -1,7 +1,7 @@
-# Authoring and Using Commands in CircleCI Configuration
+# Authoring and using commands in CircleCI configuration
 Commands are reusable sets of steps that can be invoked with specific parameters inside a job. For instance, `checkout` and `run` are considered built-in commands. You may also author your own commands or use those authored by others.
 
-## Using Commands
+## Using commands
 Commands can be invoked as steps in a job. For instance, to invoke the command `sayhello`, passing it a parameter `to` you would write:
 
 ```yaml
@@ -14,10 +14,10 @@ jobs:
           to: "Lev"
 ```
 
-## Authoring Commands
+## Authoring commands
 A command definition is YAML that defines metadata, parameters, and a sequence of steps to be executed when invoking the command.
 
-### Command Syntax
+### Command syntax
 A command can have the following immediate children keys as a map:
 
 - **description:** (optional) A string that describes the purpose of the command, used for generating documentation.
@@ -45,7 +45,7 @@ When invoking a command, the steps of that command are inserted where it's invok
 ### Invoking other commands in your command
 Commands can use other commands in the scope of execution. For instance, if a command is declared is declared inside your Orb it can use other commands in that orb. It can also use commands defined in other orbs that you have imported (e.g. `some-orb/some-command`).
 
-## Built-in Commands
+## Built-in commands
 
 CircleCI has several built-in commands available to all circleci.com customers and available by default in CircleCI server installations. Examples of built-in commands are:
 

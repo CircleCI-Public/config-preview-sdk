@@ -1,6 +1,6 @@
-# Explaining the design approach to CircleCI Configuration
+# Explaining the design approach to CircleCI configuration
 
-## Core Characteristics of CircleCI Build Configuration
+## Core characteristics of CircleCI build configuration
 1. **Deterministic:** Every build should behave the same way given the same inputs. This prevents things from changing on you that you can't control, and it prevents CircleCI from having to make and then carry assumptions about how you want to run your builds.
 1. **Config as Data:** We use YAML because it provides a way to author a data structure with a reasonable balance between syntactic weight and expressiveness. Having configuration be data rather than a programming language allows easy and reliable tooling for doing config syntax and schema validation, various static analysis and data tranformations that occur during the processing of your builds, and automated documentation with first-class metadata.
 1. **Declarative of Build Behaviors:** The semantics of CircleCI config revolve around the core domain model of build execution inside our platform.  The core structure is driven by workflows that invoke and coordinate jobs that express a set of steps to run and the execution environment in which to run them. Our configuration code is intrinsically meta to your build process. We want to let you focus on what your code is going to do inside the runtime and get out of your way as much possible. Using a declarative syntax allows to give you an expressive set of primitives without making you learn much, if anything, about how our internal systems work or learn some new programming language.

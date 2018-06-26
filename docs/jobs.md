@@ -150,7 +150,7 @@ workflows:
             - SayHelloChad
 ```
 
-### Pre and Post Steps
+### Pre and post steps
 
 Every job accepts two special arguments: `pre-steps` and `post-steps`.
 Users can optionally invoke a job with one or both of these arguments. Steps under `pre-steps`
