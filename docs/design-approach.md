@@ -38,7 +38,16 @@ Orbs are less like your core software, and more like a piece of configuration yo
 1. **Semantic Versioning and Locking:** We want to allow orb authors to dynamically add features and fixes to orbs. At the same time, we want to prevent things from changing out from under orb users: fixing the orbs that users leverage so that users' configurations remain static unless the user specifies otherwise. 
 We choose to enforce a strict format for [semver](https://semver.org/) on all published revisions. When importing we allow an orb user to lock a specific revision or to assume the risk of breakage and to use the latest version (`volatile`).
 1. **Register-time Dependency Resolution:** If an orb (`my-orb`) imports other orbs, we will resolve and lock those dependencies at the time that `my-orb` is added to the registry.
-We recommend selecting the version of the orbs (for example, `foo-orb`)that you import. Regardless of which version you select, that version will be locked at the time `my-orb` is published. Any subsequent publishes of new revisions to `foo-orb` will be ignored, and you would need to push a new revision of your orb to pick up changes in `foo-orb`. This is true for `foo-orb:volatile` (the latest version), too: `my-orb` will be published with the static contents of `foo-orb:volatile` at the time of `my-orb`'s publishing.
+For instance, let's say that you publish version 1.2.0 of `my-orb`, and it contains:
+
+```
+orbs:
+  foo-orb: somenamespace/some-orb:volatile` 
+```
+
+
+At the time you register 1.2.0 of `my-orb` the latest version of `foo-orb` will be flatteneded into `my-orb` version 1.2.0. If a new version of `foo-orb` is published it won't get incorporated into `my-orb` until you publish a new version. **NOTE:** _We recommend selecting the fully qualified version of the orbs that you import to ensure deterministic behavior._
+
 1. **One registry per CircleCI installation:** Orbs are specific to running CircleCI builds, so we decided to avoid the complexities and security surface area of having arbitrary registries.
 All orbs used in a CirlceCI build must be in the registry of the installation on which your build runs. 
 1. **All orbs live in a namespace:** All orbs live in exactly one namespace.
