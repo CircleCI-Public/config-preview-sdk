@@ -115,9 +115,9 @@ For details on parameter naming rules, see the [naming section in the structure 
 
 ## Invoking the same job multiple times
 
-A single configuration may invoke a job many times. At configuration processing time during build ingestion, CircleCI will auto-generate names if none are provided.  If a user cares about the name of the duplicate jobs, they can explicitly name them with the `name` key.
+A single configuration may invoke a job many times. At configuration processing time during build ingestion, CircleCI will auto-generate names if none are provided.  If you carec about the name of the duplicate jobs, they can be explicitly named with the `name` key.
 
->NOTE: The user must explicitly name repeat jobs when a repeat job should be upstream (ie: is used under the `requires` key of a job invocation in a workflow) of another job in the workflow.
+>NOTE: The user must explicitly name repeat jobs when a repeat job should be upstream of another job in a workflow (ie: if the job is used under the `requires` key of a job invocation in a workflow you will need to name it).
 
 ```yaml
 workflows:

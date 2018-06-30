@@ -41,7 +41,7 @@ jobs:
 ```
 
 ```
-# inside user's config.yml
+# inside config.yml
 version: 2
 workflows:
   workflow:
