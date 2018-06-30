@@ -15,7 +15,7 @@ Command.
 
 A conditional step consists of a step with the key `when` or `unless`. Under this conditional key are the subkeys `steps` and `condition`. If `condition` is met (using when/unless logic), the subkey `steps` are run. 
 
-> `condition` is a single value that evaluates to `true` or `false` at the time the config is processed, which means all conditions must be resolvable at this time (e.g. no injected variables).
+> `condition` is a single value that evaluates to `true` or `false` at the time the config is processed, so you cannot use environment variables as conditions, as those are not injected until your steps are running in the shell of your execution environment. You can use parameters as your conditions.
 
 ### Example
 
