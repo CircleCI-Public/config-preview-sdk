@@ -11,8 +11,7 @@ The credentials associated with the build request must be able to execute agains
 2. If the build request passes authorization, the build increments the build number on the project and project configuration is retrieved from source based on the SHA1 of the commit (unless config is being passed in via the API).
 If your configuration cannot be retrieved the build will be failed and you will see a failed Build.
 
-3. Configuration for the build is validated to ensure it parses as YAML and adheres to the CircleCI [Configuration Schema](https://github.com/circleci/config-compilation/blob/master/resources/main/orbs.schema.json). 
-If the configuration cannot be processed the build will fail, and you will see the resulting errors in the build.
+3. Configuration for the build is validated to ensure it parses as YAML and adheres to the CircleCI configuration schema (TODO: publish and link to the schema). If the configuration cannot be processed the build will fail, and you will see the resulting errors in the build.
 
 4. If configuration can be processed, all dynamic elements are resolved including orbs and inline commands and parameters. 
 If there are errors during orb and parameter resolution the build will be failed, and you will see errors related to config compilation on the build. 
