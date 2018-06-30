@@ -1,7 +1,7 @@
-# Authoring and Using Commands in CircleCI Configuration
+# Authoring and using commands in CircleCI configuration
 Commands are reusable sets of steps that can be invoked with specific parameters inside a job. For instance, `checkout` and `run` are considered built-in commands. You may also author your own commands or use those authored by others.
 
-## Using Commands
+## Using commands
 Commands can be invoked as steps in a job. For instance, to invoke the command `sayhello`, passing it a parameter `to` you would write:
 
 ```yaml
@@ -14,13 +14,13 @@ jobs:
           to: "Lev"
 ```
 
-## Authoring Commands
+## Authoring commands
 A command definition is YAML that defines metadata, parameters, and a sequence of steps to be executed when invoking the command.
 
-### Command Syntax
+### Command syntax
 A command can have the following immediate children keys as a map:
 
-- **description:** (optional) A string that describes the purpose of the command, used for generating documenation.
+- **description:** (optional) A string that describes the purpose of the command, used for generating documentation.
 - **parameters:** (optional) A map of parameter keys, each of which adheres to the [parameter](parameters.md) spec.
 - **steps:** (required) A sequence of steps run inside the calling job of the command.
 
@@ -35,6 +35,7 @@ commands:
     parameters:
       to:
         type: string
+        default: "Hello World"
     steps:
       - run: echo << parameters.to >>
 ```
@@ -42,9 +43,9 @@ commands:
 When invoking a command, the steps of that command are inserted where it's invoked. Commands can only be invoked as part of the sequence under `steps` in a job.
 
 ### Invoking other commands in your command
-Commands can use other commands in the scope of execution. For instance, if a command is declared locally inside your `.circleci` folder it can invoke other commands also declared locally. If a command is declared inside an Orb it can use other commands in that orb. We do not yet allow calling commands outside the scope of declaration.
+Commands can use other commands in the scope of execution. For instance, if a command is declared inside your Orb it can use other commands in that orb. It can also use commands defined in other orbs that you have imported (e.g. `some-orb/some-command`).
 
-## Built-in Commands
+## Built-in commands
 
 CircleCI has several built-in commands available to all circleci.com customers and available by default in CircleCI server installations. Examples of built-in commands are:
 
@@ -52,17 +53,17 @@ CircleCI has several built-in commands available to all circleci.com customers a
   * `setup_remote_docker`
   * `save_to_workspace`
 
-_NOTE: Built-in commands are implicitly in the empty scope and are thus syntactically equivalent to primitives such as `run`). This _may_ change in future versions of configuration but is true to maintain compatibility with version `2` configuration._
+> NOTE: Built-in commands are implicitly in the empty scope and are thus syntactically equivalent to primitives such as `run`). This _may_ change in future versions of configuration but is true to maintain compatibility with version `2` configuration.
 
 ## Examples
 
-The following is a an example of an "s3tools" orb defining a command called "s3sync":
+The following is a an example of part of an "s3tools" orb defining a command called "s3sync":
 
 ```yaml
-# orb.yml
+# s3tools orb
 commands:
   s3sync:
-    description: "A simple encapsultion of doing an s3 sync"
+    description: "A simple encapsulation of doing an s3 sync"
     parameters:
       from:
         type: string
@@ -80,7 +81,9 @@ commands:
 The above could be invoked in `config.yml` as:
 
 ```yaml
-workflow:
+version: 2
+
+workflows:
   version: 2
   build-test-deploy:
     jobs:
@@ -92,7 +95,7 @@ workflow:
               overwrite: true
 ```
 
-If the same command were declared locally inside config.yml it would end up looking like:
+If the same command were declared locally inside `config.yml` it would look something like:
 
 ```yaml
 commands:

@@ -1,14 +1,13 @@
-# Pre and Post Steps
+# Pre and post steps
 
 All jobs accept two special arguments of type `steps`: `pre-steps` and
-`post-steps`. If an orb user invokes a job with one or both of these arguments,
+`post-steps`.
+
+If an orb user invokes a job with one or both of these arguments,
 the job will run the steps in `pre-steps` first, before any other steps run, and
 then it will run the steps in `post-steps` last, after any other steps run.
 
 ## Motivation
-
-Pre- and post- steps allow orb users to run commands before or after a job
-runs, in the same job environment, without needing to modify the orb directly.
 
 Pre- and post- steps allow users to be execute steps in a given job's environment
 without modifying the orb. This is useful, for example, when a user imports a job
@@ -24,8 +23,7 @@ but it requires that the job be modified with an execution site for the paramete
 An orb `foo` might define a job:
 
 ```
-# orb.yml for orb `foo`
-name: foo
+# yaml from orb `foo`
 jobs:
   bar:
     machine: true
