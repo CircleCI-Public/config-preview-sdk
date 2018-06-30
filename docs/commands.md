@@ -43,7 +43,7 @@ commands:
 When invoking a command, the steps of that command are inserted where it's invoked. Commands can only be invoked as part of the sequence under `steps` in a job.
 
 ### Invoking other commands in your command
-Commands can use other commands in the scope of execution. For instance, if a command is declared is declared inside your Orb it can use other commands in that orb. It can also use commands defined in other orbs that you have imported (e.g. `some-orb/some-command`).
+Commands can use other commands in the scope of execution. For instance, if a command is declared inside your Orb it can use other commands in that orb. It can also use commands defined in other orbs that you have imported (e.g. `some-orb/some-command`).
 
 ## Built-in commands
 
