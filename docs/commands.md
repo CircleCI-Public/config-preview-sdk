@@ -83,7 +83,7 @@ The above could be invoked in `config.yml` as:
 ```yaml
 version: 2
 
-workflow:
+workflows:
   version: 2
   build-test-deploy:
     jobs:
@@ -95,11 +95,9 @@ workflow:
               overwrite: true
 ```
 
-If the same command were declared locally, the resulting `config.yml` would end up looking like:
+If the same command were declared locally inside `config.yml` it would look something like:
 
 ```yaml
-version: 2
-
 commands:
   s3sync:
     parameters:
@@ -121,11 +119,5 @@ jobs:
           from: .
           to: "s3://mybucket_uri"
           overwrite: true
-          
-workflows:
-  version: 2
-  build-test-deploy:
-    jobs:
-      - deploy2s3
 ```
 
