@@ -111,8 +111,7 @@ jobs:
       - run: echo "how are ya?"
 ```
 
-You can also refer to executors other orbs. In fact, users of your orb can invoke its executors, 
-namespaced with your orb name. For example, `foo-orb` could define the `bar` executor:
+You can also refer to executors from other orbs. Users of an orb can invoke its executors. For example, `foo-orb` could define the `bar` executor:
 
 ```yaml
 # yaml from foo-orb
@@ -125,7 +124,7 @@ executors:
 
 `baz-orb` could define the `bar` executor too:
 ```yaml
-# yaml from bar-orb
+# yaml from baz-orb
 executors:
   bar:
     docker:
@@ -150,7 +149,7 @@ different orbs.
 ## Overriding keys when invoking an executor
 When invoking an executor in a `job` any keys in the job itself will override those of the executor invoked. For instance, if your job declares a `docker` stanza, it will be used, in its entirety, instead of the one in your executor.
 
-There is **one exception** to this rule: `environment` variable maps are additive. If an `executor` has one of the same `environment` variables as the `job`, the `job`'s value will win. For example, if you had the following orb configuration:
+There is **one exception** to this rule: `environment` variable maps are additive. If an `executor` has one of the same `environment` variables as the `job`, the `job`'s value will win. For example, if you had the following configuration:
 
 ```
 executors:
