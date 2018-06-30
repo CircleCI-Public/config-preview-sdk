@@ -24,7 +24,6 @@ An orb `foo` might define a job:
 
 ```
 # yaml from orb `foo`
-name: foo
 jobs:
   bar:
     machine: true
