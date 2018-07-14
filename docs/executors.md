@@ -135,6 +135,9 @@ A user could use either executor from their configuration file with:
 
 ```yaml
 # config.yml
+orbs:
+  foo-orb: somenamespace/foo@1
+  baz-orb: someothernamespace/baz@3.3.1
 jobs:
   some-job:
     executor: foo-orb/bar  # prefixed executor
@@ -143,8 +146,7 @@ jobs:
 ```
 
 Note that `foo-orb/bar` and `baz-orb/bar` are different executors. They
-both have the local name `bar` but are independent executors living in
-different orbs.
+both have the local name `bar` relative to their orbs, but the are independent executors living in different orbs.
 
 ## Overriding keys when invoking an executor
 When invoking an executor in a `job` any keys in the job itself will override those of the executor invoked. For instance, if your job declares a `docker` stanza, it will be used, in its entirety, instead of the one in your executor.

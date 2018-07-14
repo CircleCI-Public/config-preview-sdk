@@ -10,4 +10,6 @@ Orbs are packages of reusable CircleCI configuration. They allow you to create e
 1. [Parameters](parameters.md)
 1. [Jobs](jobs.md)
 1. [Executors](executors.md)
+2. [Conditional Steps](conditional-steps.md)
+3. [Pre and Post Steps in Jobs](pre-and-post-steps.md)
 1. [Understanding the design of Orbs](design-approach.md)
