@@ -15,12 +15,12 @@ Command.
 
 A conditional step consists of a step with the key `when` or `unless`. Under this conditional key are the subkeys `steps` and `condition`. If `condition` is met (using when/unless logic), the subkey `steps` are run. 
 
-> `condition` is a single value that evaluates to `true` or `false` at the time the config is processed, so you cannot use environment variables as conditions, as those are not injected until your steps are running in the shell of your execution environment. You can use parameters as your conditions.
+> `condition` is a single value that evaluates to `true` or `false` at the time the config is processed, so you cannot use environment variables as conditions, as those are not injected until your steps are running in the shell of your execution environment. You can use parameters as your conditions. The empty string will resolve as falsey in `when` conditions.
 
 ### Example
 
 ```
-# inside orb.yml for orb `myorb`
+# Contents of the orb `myorb` in namespace `mynamespace`
 jobs:
   myjob:
     parameters:
@@ -43,6 +43,10 @@ jobs:
 ```
 # inside config.yml
 version: 2
+
+orbs:
+  myorb: mynamespace/myorb@1.0.1
+
 workflows:
   workflow:
     jobs:

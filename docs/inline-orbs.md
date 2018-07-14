@@ -14,7 +14,7 @@ orbs:
     commands:
       dospecialthings:
         steps:
-          - run: echo: "We will now do special things
+          - run: echo: "We will now do special things"
     jobs:
       myjob:
         executor: default
