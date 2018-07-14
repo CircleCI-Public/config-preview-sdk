@@ -19,7 +19,7 @@ orbs:
       myjob:
         executor: default
         steps:
-          - dospcialthings
+          - dospecialthings
 
 workflows:
   main:
@@ -28,11 +28,4 @@ workflows:
 
 In the above sample the contents of `my-orb` are resolved as an inline orb because the contents of `my-orb` are a map. Whereas the contents of `ror` are scalar value and thus assumed to be an orb URI.
 
-## Publishing inline orbs to the registry
-
-To publish an inline orb to the registry you can use the CLI to extract it and push it to the registry:
-
-`circleci orb publish --from-inline path/to/orb.yml --namespace mycompany --name myspecialorb --version 1.1.1`
-
-Note that you can also directly publish through our GraphQL API, though the CLI encapsulates that funcionality and is the recommended method.
 
