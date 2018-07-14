@@ -83,6 +83,9 @@ The above could be invoked in `config.yml` as:
 ```yaml
 version: 2
 
+orbs:
+  s3tools: circleci/s3@1
+
 workflows:
   version: 2
   build-test-deploy:
@@ -114,6 +117,8 @@ commands:
           command: "aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>"
 jobs:
   deploy2s3:
+    docker:
+      - image: cibuilds/aws:1.15
     steps:
       - s3sync:
           from: .

@@ -28,7 +28,7 @@ Using an orb in your build configuration might look something like:
 
 ```yaml
 version: 2
-import:
+orbs:
   s3: circleci/aws-tools@1.4.2
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
       - s3/deploy:
           from: "somepath/somefile"
           to: $S3BUCKETURI
-          overwrite: "false"
+          overwrite: false
 ```
 
 The above imports the `circleci/aws-tools` orb at revision 1.4.2, then invokes a command called `deploy` from that orb, passing in three parameters.
@@ -59,7 +59,7 @@ commands:
         description: A URI to an S3 bucket
       overwrite:
         type: boolean
-        default: "false"
+        default: false
         description: Boolean value for whether to overwrite the files
     steps:
       - run:
