@@ -8,6 +8,7 @@ Orbs are packages of reusable CircleCI configuration. They allow you to create e
 1. [What's new in the config preview?](whats-new.md)
 1. [Getting started with new config features](getting-started.md) 
 1. [Orb structure](structure.md)
+1. [Using orbs](using-orbs.md)
 1. [Commands](commands.md)
 1. [Parameters](parameters.md)
 1. [Jobs](jobs.md)
