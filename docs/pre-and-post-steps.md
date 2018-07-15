@@ -39,6 +39,8 @@ Then an orb user could use the job as follows:
 ```
 # config.yml
 version: 2
+orbs:
+  foo: somenamespace/foo@1.2
 workflows:
   version: 2
   build:

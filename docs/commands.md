@@ -115,10 +115,13 @@ commands:
       - run:
           name: Deploy to S3
           command: "aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>"
-jobs:
-  deploy2s3:
+executors:
+  aws:
     docker:
       - image: cibuilds/aws:1.15
+jobs:
+  deploy2s3:
+    executor: aws
     steps:
       - s3sync:
           from: .
