@@ -1,0 +1,9 @@
+# What's new in the configuration preview?
+
+
+1. **Configuration pre-processing** - We are refactoring our build ingestion system to pre-process configuration before running workflows or jobs. Centralizing configuration processing will allow us to provide much better and much earlier feedback on problems with the configuration itself, such as syntax errors or malformed semantics. This will also allow us to add various configuration "sugaring" techniques and make reusable, parameterizable configuration a reality.
+2. **Reusable custom commands** - [Commands](commands.md) are parameterized sets of steps you declare that can be invoked as a step in a job. This will allow you to reduce repetitiveness in your code and encapsulate common set of steps, including the ability to call them with different parameters.
+3. **Parameters in jobs** - Jobs can now declare [parameters](parameters.md) that can be passed in when invoking the job in a workflow. This allows you to reuse jobs or call them differently based on parameter inputs. You can also now run the same job multiple times with different parameter values on each.
+4. **Reusable executors** - [Executors](executors.md) define the environment and other settings for executing jobs. They allow you to reuse configuration of your execution environment across jobs.
+5. **Conditional steps in jobs** - The new `when` clause under steps allows you to run [conditionally run steps](conditional-steps.md) only when certain parameter values are true.
+6. **Orbs** - Orbs are packages of CircleCI configuration that can be shared across projects. Orbs allow you to make a single bundle of jobs, commands, and executors that can reference each other and can be imported into a CircleCI build configuration and invoked in their own namespace. Orbs are registered with CircleCI, with revisions expressed using the [semver](https://semver.org/) pattern.
