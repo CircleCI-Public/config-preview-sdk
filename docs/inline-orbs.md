@@ -5,7 +5,7 @@ To write inline orbs you would put the orb elements under that orb's key in the 
 
 ```
 orbs:
-  ror: circleci/rails@latest
+  ror: circleci/rails@volatile
   my-orb:
     executors:
       default:
