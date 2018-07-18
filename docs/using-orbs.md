@@ -8,7 +8,7 @@ Importing a set of orbs might look like:
 orbs:
   rails: circleci/rails@1.13.3
   python: circleci/python@2.1
-  heroku: circleci/heroku@latest
+  heroku: circleci/heroku@volatile
 ```
 
 The above would make three orbs available, one for each key in the map and named the same as the keys in the map. 
@@ -24,7 +24,7 @@ Orb namespaces may have restrictions that prevent you from accesing orbs in thos
 
 ## Semantic Versioning in Orbs
 
-Orbs are published with the standard 3-number [semantic versioning system](https://semver.org/), `major.minor.patch`, and orb authors need to adhere to semantic versioning. Within `config.yml`, you can specify wildcard version ranges to resovle orbs. You can also use the special string `latest` to pull in whatever the highest version number is.  
+Orbs are published with the standard 3-number [semantic versioning system](https://semver.org/), `major.minor.patch`, and orb authors need to adhere to semantic versioning. Within `config.yml`, you can specify wildcard version ranges to resovle orbs. You can also use the special string `volatile` to pull in whatever the highest version number is.  
 
 For instance, the versions below have the following meaning:
 
