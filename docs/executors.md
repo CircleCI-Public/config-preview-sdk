@@ -23,7 +23,7 @@ version: 2
 executors:
   my-executor:
     docker:
-      - image: circleci/ruby:latest
+      - image: circleci/ruby:volatile
 
 jobs:
   my-job:
