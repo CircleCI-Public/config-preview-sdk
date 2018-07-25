@@ -1,4 +1,4 @@
-# Using parameters in CircleCI configuration elements
+# Using Parameters in CircleCI Configuration Elements
 Many config elements can be authored to be invocable in your `config.yml` file with specified parameters. Parameters are declared by name as the keys in a map that are all immediate children of the `parameters` key under a job, command, or executor. For instance, the following shows declaring a parameter `foo` in the definition of a command `bar`:
 
 ```yaml
@@ -32,10 +32,12 @@ A parameter can have the following keys as immediate children:
 | Key Name    | Description                                                                                   | Default value |
 |-------------|-----------------------------------------------------------------------------------------------|---------------|
 | description | Optional. Used to generate documentation for your orb.                                        | N/A           |
-| type        | Required. Currently "string", "boolean", and "steps". are supported                           | N/A           |
+| type        | Required. Currently "string", "boolean", "enum", and "steps" are supported                           | N/A           |
 | default     | The default value for the parameter. If not present, the parameter is implied to be required. | N/A           |
 
-## Parameter types
+## Parameter Types
+
+This section describes the 
 
 ### String
 
@@ -118,3 +120,31 @@ steps:
   - run: echo "And now I'm going to run the tests"
   - run: make test
 ```
+
+### Enum
+
+Use the `enum` parameter to declare the target operating system for a binary.
+
+```yaml
+commands:
+  list-files:
+    parameters:
+      os: 
+        default: "linux"
+        description: The target Operating System for the heroku binary. Must be one of "linux", "darwin", "win32".
+        type: enum
+        enum: ["linux", "darwin", "win32"]
+```        
+
+The following `enum` type decalration is invalid because the default is not declared in the enum list.
+
+```yaml
+commands:
+  list-files:
+    parameters:      
+      os:
+        type: enum
+        default: "windows" #invalid declaration of default that does not appear in the comma-separated enum list
+        enum: ["darwin", "linux"]
+```        
+
