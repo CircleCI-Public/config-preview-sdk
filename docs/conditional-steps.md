@@ -1,4 +1,5 @@
 # Conditional steps
+_Conditional steps are available in configuration version 2.1 and later_
 
 Conditional steps allow the definition of steps that only run if a condition is
 met. For example, an orb could define a command that runs a set of steps *if* the

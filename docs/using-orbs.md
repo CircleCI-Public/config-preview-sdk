@@ -1,4 +1,5 @@
 # Using Orbs in CirlceCI Configuration
+_The `orbs` stanza is available in configuration version 2.1 and later._
 
 Orbs are packages of CircleCI configuration shared across projects. Orbs are made available for use in configuration through the `orbs` key in the top level of your config.yml. 
 

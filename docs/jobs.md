@@ -1,4 +1,6 @@
 # Authoring and using jobs
+_Invoking jobs multiple times in a single workflow and parameters in jobs are available in configuration version 2.1 and later._
+
 Jobs are sets of steps and the environments they should be executed within.
 
 ## Job naming and organization
