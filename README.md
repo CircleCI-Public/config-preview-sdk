@@ -27,10 +27,11 @@ We are considering the new build processing system in preview until we have solv
 ## Configuration version 2.1
 With the introduction of build processing we are making available version 2.1 of build configuration.
 
-A few things to keep in mind:
+**Important caveats about 2.1 configuration**:
 
-* If you use v2.1 configuration we will no longer support legacy syntax no longer documented (mostly impacts companies that were very early adopters of CircleCI 2.0 during our initial previews).
+* Parameter evaluation in configuration uses the syntax `<< parameters.foo >>`, so any use of `<<` in 2.1 or later will need to be escaped using a prefix of `\` if you are using it for things where you want it to be unevaluated in your shell commands, such as when used in a heredoc declaration. We may adjust this behavior in the future to do some auto-escaping, but it will always be safe to escape it when you want a literal `<<` to remain in your shell steps. 
 * Local builds do not support v2.1 config. There is a work-around, in that you can use the new `circleci config expand` command to process your configuration, save the result locally, then run it as a local build.
+* If you use v2.1 configuration we will no longer support legacy syntax no longer documented (mostly impacts companies that were very early adopters of CircleCI 2.0 during our initial previews). This includes old keys such as `shell` as a synonym for `run` and `setup_docker_engine` as a synonym for `setup_remote_docker`
 * Any code you write with v2.1 will only work with build processing on, so we recommend you work in a branch and only merge to your master once you're comfortable that you won't be turning build processing back off - if you turn off build processing any of the new config features introduced in 2.1 or later will cause your builds to fail.
  
 ## Staying informed
