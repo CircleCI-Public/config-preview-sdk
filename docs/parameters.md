@@ -98,11 +98,11 @@ commands:
         default: []
     steps:
     - run: make deps
-    - << parameters.after-deps >>
+    - steps: << parameters.after-deps >>
     - run: make test
 ```
 
-Steps passed as parameters are expanded and spliced into the array of existing steps. For example,
+Steps passed as parameters are given as the value of a `steps` declaration under the job's `steps` declaration and are expanded and spliced into the array of existing steps. For example,
 
 ```yaml
 jobs:
