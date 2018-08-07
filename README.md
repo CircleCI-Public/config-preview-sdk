@@ -30,7 +30,7 @@ With the introduction of build processing we are making available version 2.1 of
 A few things to keep in mind:
 
 * If you use v2.1 configuration we will no longer support legacy syntax no longer documented (mostly impacts companies that were very early adopters of CircleCI 2.0 during our initial previews).
-
+* Local builds do not support v2.1 config. There is a work-around, in that you can use the new `circleci config expand` command to process your configuration, save the result locally, then run it as a local build.
 * Any code you write with v2.1 will only work with build processing on, so we recommend you work in a branch and only merge to your master once you're comfortable that you won't be turning build processing back off - if you turn off build processing any of the new config features introduced in 2.1 or later will cause your builds to fail.
  
 ## Staying informed
