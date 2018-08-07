@@ -3,6 +3,11 @@
 ## Getting Started
 You can turn on build processing at the bottom of the "Advanced" section of your project's settings. If you don't see this setting, it should appear in the next few days for you as we roll it out to more and more organizations.
 
+You should also consider upgrading your `circleci` CLI to the new version. To do so, follow the instructions on the [circleci-cli repository](https://github.com/CircleCI-Public/circleci-cli/blob/master/README.md) for upgrading if you already have `circleci` installed, or installing from scratch if you haven't yet installed it.
+
+## Why turn on build processing?
+We will soon turn on build processing for all CircleCI 2.0 builds, but we are providing this opt-in period to provide earlier access to some new features that build processing will enable and to help us make transitions to the new system more gradual and less risky.
+
 The new build processing feature enables the following:
 
 1. Use of the [new configuration version 2.1 features](docs/whats-new.md)
@@ -29,7 +34,6 @@ We are considering the new build processing system in preview until we have solv
 * TODO: Make the new build triggering API endpoint accept parameters and workflow/job filters
 * TODO: Auto-cancel redundant builds (including workflows)
 * TODO: Solve UI for Rerun of a job (rerun the workflow of the job)
-
 
 ## IMPORTANT: 2.1 Configuration Caveats
 With the introduction of build processing we are making available version 2.1 of build configuration.
