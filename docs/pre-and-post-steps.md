@@ -1,7 +1,8 @@
 # Pre and post steps
+_The keys `pre-steps` and `post-steps` in jobs are available in configuration version 2.1 and later_
 
 All jobs accept two special arguments of type `steps`: `pre-steps` and
-`post-steps`.
+`post-steps`. _These stanzas are available in con
 
 If an orb user invokes a job with one or both of these arguments,
 the job will run the steps in `pre-steps` first, before any other steps run, and

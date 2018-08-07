@@ -1,5 +1,9 @@
 # Using Parameters in CircleCI Configuration Elements
-Many config elements can be authored to be invocable in your `config.yml` file with specified parameters. Parameters are declared by name as the keys in a map that are all immediate children of the `parameters` key under a job, command, or executor. For instance, the following shows declaring a parameter `foo` in the definition of a command `bar`:
+_The `parameters` declaration is available in configuration version 2.1 and later._
+
+Many config elements can be authored to be invocable in your `config.yml` file with specified parameters. Parameters are declared by name as the keys in a map that are all immediate children of the `parameters` key under a job, command, or executor. 
+
+For instance, the following shows declaring a parameter `foo` in the definition of a command `bar`:
 
 ```yaml
 commands:

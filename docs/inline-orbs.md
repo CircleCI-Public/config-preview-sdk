@@ -1,4 +1,6 @@
 # Writing Inline Orbs
+_The `orbs` stanza is available in configuration version 2.1 and later_
+
 Inline orbs can be handy during development of an orb or as a convenience for namespacing jobs and commands in lengthy configurations, particularly if you later intend to share the orb.
 
 To write inline orbs you would put the orb elements under that orb's key in the `orbs` declaration in config. For instance, if I wanted to import one orb then author inline for another it might look like:

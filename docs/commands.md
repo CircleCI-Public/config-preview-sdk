@@ -1,4 +1,6 @@
 # Authoring and using commands in CircleCI configuration
+_The `commands` stanza is available in configuration version 2.1 and later_
+
 Commands are reusable sets of steps that can be invoked with specific parameters inside a job. For instance, `checkout` and `run` are considered built-in commands. You may also author your own commands or use those authored by others.
 
 ## Using commands

@@ -1,5 +1,15 @@
 # Explaining the design approach to CircleCI configuration
 
+## What problems are we trying to solve with the new build processing system?
+1. **Better [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) support** 
+The configuration in CircleCI 2.0 is designed to be highly deterministic. As a result, the syntax proved in many cases to be much more verbose and prone to too much boiler plate and repeated code blocks. We aim to provide better ways avoid repetitive build configuration.
+
+2. **Code reuse across projects** 
+We hear from a lot of customers that they want better ways to share configuration across projects. This repo introduces Orbs, reusable packages of parameterizable CircleCI configuration elements that can be added to the Orb registry for use across projects.
+
+3. **Easier path to common configuration**
+We often hear that people want more off-the-shelf options to get their first useful builds flowing, especially for common platforms like Rails, Node, and they want better encapsulation of common tasks like deploying to Heroku or pushing to an S3 bucket.
+
 ## Core characteristics of CircleCI build configuration
 1. **Deterministic:** Every build should behave the same way given the same inputs.
 
@@ -14,7 +24,6 @@
 3. **Declarative of Build Behaviors:** The semantics of CircleCI config revolve around the core domain model of build execution inside our platform.
 
 > The core structure is driven by workflows that invoke and coordinate jobs that express a set of steps to run and the execution environment in which to run them. Our configuration code is intrinsically meta to your build process. We want to let you focus on what your code is going to do inside the runtime and get out of your way as much possible. Using a declarative syntax allows to give you an expressive set of primitives without making you learn much, if anything, about how our internal systems work or learn some new programming language.
-
 
 ## Configuration lifecycle
 1. **Retrieval:** Build configuration you write is retrieved from your git repository when CircleCI receives webhooks from your version control provider (eg: GitHub) or can be passed in as part of an API call triggering a build. 

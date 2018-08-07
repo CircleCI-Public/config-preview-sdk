@@ -1,4 +1,6 @@
 # Authoring and using Executors 
+_Reusable `executor` declarations are available in configuration version 2.1 and later_
+
 - [What _is_ an executor?](#what-is-an-executor)
 - [Common uses of executors](#common-uses-of-executors)
 - [Declaring and using `executors` in an orbs.](#declaring-and-using-executors-in-an-orbs)
