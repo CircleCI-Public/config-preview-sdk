@@ -25,7 +25,8 @@ orbs:
 
 workflows:
   main:
-    - my-orb/myjob
+    jobs:
+      - my-orb/myjob
 ```
 
 In the above sample the contents of `my-orb` are resolved as an inline orb because the contents of `my-orb` are a map. Whereas the contents of `ror` are scalar value and thus assumed to be an orb URI.
