@@ -34,7 +34,13 @@ For instance, the versions below have the following meaning:
 3. `circleci/python@2.4.*` - use the latest version of version 2.4.x of the Python orb .
 4. `circleci/python@3.1.4` - use exactly version 3.1.4 of the Python orb.
 
+## Dev versioning in Orbs
 
+Orbs can be published with dev versions by a larger group of users in an organization than those who can publish semantic versions.  Dev versions must be in the following format:
 
-
- 
+- Begin with the string "dev:"
+- Have between 0 and 1023 of the following characters:
+  - Numbers `0-9`
+  - Lowercase letters `a-z`
+  - Dashes `-`
+  - Underscores `_`
