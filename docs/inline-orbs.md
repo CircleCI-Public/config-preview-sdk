@@ -23,6 +23,7 @@ orbs:
         steps:
           - dospecialthings
 
+version: 2.1
 workflows:
   main:
     jobs:
