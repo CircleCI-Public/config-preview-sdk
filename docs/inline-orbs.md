@@ -16,13 +16,14 @@ orbs:
     commands:
       dospecialthings:
         steps:
-          - run: echo: "We will now do special things"
+          - run: echo "We will now do special things"
     jobs:
       myjob:
         executor: default
         steps:
           - dospecialthings
 
+version: 2.1
 workflows:
   main:
     jobs:
