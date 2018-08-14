@@ -11,7 +11,7 @@ We will soon turn on build processing for all CircleCI 2.0 builds, but we are pr
 The new build processing feature enables the following:
 
 1. Use of the [new configuration version 2.1 features](docs/whats-new.md)
-2. Use of the new [API endpoint to trigger builds with workflows](https://gist.github.com/ndintenfass/a5a0a8b559057f29a63218e545033d3a#file-build-triggering-via-api-md)
+2. Use of the new [API endpoint to trigger builds with workflows](https://circleci.com/docs/api/v1-reference/#new-project-build)
 3. Auto-cancelation of redundant builds containing workflows (coming soon).
 
 A few highlight links to get going:
