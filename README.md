@@ -12,7 +12,7 @@ The new build processing feature enables the following:
 
 1. Use of the [new configuration version 2.1 features](docs/whats-new.md)
 2. Use of the new [API endpoint to trigger builds with workflows](https://circleci.com/docs/api/v1-reference/#new-project-build)
-3. Auto-cancelation of redundant builds containing workflows (coming soon).
+3. Auto-cancelation of redundant builds containing workflows.
 
 A few highlight links to get going:
 
