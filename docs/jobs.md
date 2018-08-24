@@ -33,7 +33,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - sayhello
+      - sayhello:
           saywhat: Everyone
 ```
 
@@ -111,7 +111,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - sayhello
+      - sayhello:
           saywhat: Everyone
 ```
 
