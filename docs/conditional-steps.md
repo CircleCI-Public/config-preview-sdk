@@ -20,7 +20,7 @@ A conditional step consists of a step with the key `when` or `unless`. Under thi
 
 ### Example
 
-```
+```yaml
 # Contents of the orb `myorb` in namespace `mynamespace`
 jobs:
   myjob:
@@ -41,7 +41,7 @@ jobs:
             - run: echo "don't preinstall"
 ```
 
-```
+```yaml
 # inside config.yml
 version: 2
 

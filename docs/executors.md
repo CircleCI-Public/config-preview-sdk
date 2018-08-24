@@ -20,7 +20,7 @@ An executor definition includes the subset of the children keys of a `job` decla
 
 A simple example of using an executor:
 
-```
+```yaml
 version: 2
 executors:
   my-executor:
@@ -36,7 +36,7 @@ jobs:
 
 In the above example the executor `my-executor` is passed as the single value of the key `executor`. Alternatively, you can pass `my-executor` as the value of a `name` key under `executor` -- this method is primarily employed when passing parameters to executor invocations (see below):
 
-```
+```yaml
 jobs:
   my-job:
     executor:
@@ -61,7 +61,7 @@ Imagine you have several jobs that you need to run in the same Docker image and 
 With an executor declaration your configuration might look something like: 
 
 **Without executors**
-```
+```yaml
 jobs:
   build:
     docker:
@@ -87,7 +87,7 @@ jobs:
 ```
     
 **Same Code, With executors**
-```
+```yaml
 executors:
   lein_exec:
     docker:
@@ -155,7 +155,7 @@ When invoking an executor in a `job` any keys in the job itself will override th
 
 There is **one exception** to this rule: `environment` variable maps are additive. If an `executor` has one of the same `environment` variables as the `job`, the `job`'s value will win. For example, if you had the following configuration:
 
-```
+```yaml
 executors:
   python:
     docker:
@@ -180,7 +180,7 @@ jobs:
 
 
 This would resolve to:
-```
+```yaml
 jobs:
  build:
    steps: []
@@ -200,7 +200,7 @@ If you'd like to use parameters in executors, define the parameters under the gi
 Parameters in executors can be of the type `string` or `boolean`. Default values can be provided with the optional `default` key.
 
 **Example build configuration using a parameterized executor**
-```
+```yaml
 version: 2
 
 executors:
@@ -225,7 +225,7 @@ jobs:
 ```
 
 **The above would resolve to:**
-```
+```yaml
 version: 2
 jobs:
   build:

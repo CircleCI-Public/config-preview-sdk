@@ -10,7 +10,7 @@ Orbs are composed of one or more of the following elements, each of which repres
 * [executors](executors.md)
 
 An example orb:
-```
+```yaml
 # foo Orb
 commands:
   echo:

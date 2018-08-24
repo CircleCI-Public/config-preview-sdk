@@ -5,7 +5,7 @@ Orbs are packages of CircleCI configuration shared across projects. Orbs are mad
 
 Importing a set of orbs might look like:
 
-```
+```yaml
 orbs:
   rails: circleci/rails@1.13.3
   python: circleci/python@2.1

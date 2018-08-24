@@ -49,7 +49,7 @@ We choose to enforce a strict format for [semver](https://semver.org/) on all pu
 1. **Register-time Dependency Resolution:** If an orb (`my-orb`) imports other orbs, we will resolve and lock those dependencies at the time that `my-orb` is added to the registry.
 For instance, let's say that you publish version 1.2.0 of `my-orb`, and it contains:
 
-```
+```yaml
 orbs:
   foo-orb: somenamespace/some-orb:volatile` 
 ```

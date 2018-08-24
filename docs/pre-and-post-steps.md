@@ -23,7 +23,7 @@ but it requires that the job be modified with an execution site for the paramete
 
 An orb `foo` might define a job:
 
-```
+```yaml
 # yaml from orb `foo`
 jobs:
   bar:
@@ -37,7 +37,7 @@ jobs:
 ```
 
 Then an orb user could use the job as follows:
-```
+```yaml
 # config.yml
 version: 2
 orbs:
@@ -57,7 +57,7 @@ workflows:
 
 The resulting configuration would look like this:
 
-```
+```yaml
 version: 2
 jobs:
   foo/bar:
