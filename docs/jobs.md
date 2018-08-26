@@ -27,7 +27,7 @@ jobs:
         type: string
     machine: true
     steps:
-      - echo "Hello << parameters.saywhat >>"
+      - run: echo "Hello << parameters.saywhat >>"
 
 workflows:
   build:
@@ -60,7 +60,7 @@ commands:
       saywhat:
         type: string
     steps:
-      - echo "<< parameters.saywhat >>"
+      - run: echo "<< parameters.saywhat >>"
 ```
 
 **Config leveraging hello-orb**
@@ -104,7 +104,7 @@ commands:
       saywhat:
         type: string
     steps:
-      - echo "<< parameters.saywhat >>"
+      - run: echo "<< parameters.saywhat >>"
 
 workflows:
   build:
