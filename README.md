@@ -3,7 +3,7 @@
 ## Getting Started
 You can turn on build processing at the bottom of the "Advanced" section of your project's settings. If you don't see this setting, it should appear in the next few days for you as we roll it out to more and more organizations.
 
-Note that if you are turning on build processing to use the new 2.1 configuration features you will want to read [the getting started section](https://github.com/CircleCI-Public/config-preview-sdk/blob/master/docs/getting-started.md) of the  [docs on the new configuration features](https://github.com/CircleCI-Public/config-preview-sdk/blob/master/docs/README.md) 
+Note that if you are turning on build processing to use the new 2.1 configuration features you will want to read [the getting started section](https://github.com/CircleCI-Public/config-preview-sdk/blob/master/docs/getting-started.md) of the [docs on the new configuration features](https://github.com/CircleCI-Public/config-preview-sdk/blob/master/docs/README.md).
 
 You should also consider upgrading your `circleci` CLI to the new version. To do so, follow the instructions on the [circleci-cli repository](https://github.com/CircleCI-Public/circleci-cli/blob/master/README.md) for upgrading if you already have `circleci` installed, or installing from scratch if you haven't yet installed it.
 
