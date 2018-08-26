@@ -21,7 +21,7 @@ An executor definition includes the subset of the children keys of a `job` decla
 A simple example of using an executor:
 
 ```yaml
-version: 2
+version: 2.1
 executors:
   my-executor:
     docker:
@@ -201,7 +201,7 @@ Parameters in executors can be of the type `string` or `boolean`. Default values
 
 **Example build configuration using a parameterized executor**
 ```yaml
-version: 2
+version: 2.1
 
 executors:
   python:
@@ -226,7 +226,7 @@ jobs:
 
 **The above would resolve to:**
 ```yaml
-version: 2
+version: 2.1
 jobs:
   build:
     steps: []

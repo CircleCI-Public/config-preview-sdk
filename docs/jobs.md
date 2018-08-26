@@ -15,7 +15,7 @@ A user must invoke jobs in the workflows stanza of `config.yml`, passing any nec
 Example of defining and invoking a parameterized job in a `config.yml`:
 
 ```yaml
-version: 2
+version: 2.1
 
 jobs:
   sayhello:
@@ -30,7 +30,6 @@ jobs:
       - echo "Hello << parameters.saywhat >>"
 
 workflows:
-  version: 2
   build:
     jobs:
       - sayhello:
@@ -67,10 +66,10 @@ commands:
 **Config leveraging hello-orb**
 ```yaml
 # config.yml
+version: 2.1
 orbs:
   hello-orb: somenamespace/hello-orb@volatile
 workflows:
-  version: 2
   build:
     jobs:
       - hello-orb/sayhello:
@@ -82,7 +81,7 @@ workflows:
 Parameters are in-scope only within the job or command that defined them. If you want a job or command to pass its parameters to a command it invokes, they must be passed explicitly.
 
 ```yaml
-version: 2
+version: 2.1
 
 jobs:
   sayhello:
@@ -108,7 +107,6 @@ commands:
       - echo "<< parameters.saywhat >>"
 
 workflows:
-  version: 2
   build:
     jobs:
       - sayhello:
@@ -124,8 +122,8 @@ A single configuration may invoke a job many times. At configuration processing 
 >NOTE: The user must explicitly name repeat jobs when a repeat job should be upstream of another job in a workflow (ie: if the job is used under the `requires` key of a job invocation in a workflow you will need to name it).
 
 ```yaml
+version: 2.1
 workflows:
-  version: 2
   build:
     jobs:
       - loadsay
