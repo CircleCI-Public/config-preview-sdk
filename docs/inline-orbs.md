@@ -5,7 +5,7 @@ Inline orbs can be handy during development of an orb or as a convenience for na
 
 To write inline orbs you would put the orb elements under that orb's key in the `orbs` declaration in config. For instance, if I wanted to import one orb then author inline for another it might look like:
 
-```
+```yaml
 orbs:
   ror: circleci/rails@volatile
   my-orb:
