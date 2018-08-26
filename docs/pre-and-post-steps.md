@@ -39,11 +39,10 @@ jobs:
 Then an orb user could use the job as follows:
 ```yaml
 # config.yml
-version: 2
+version: 2.1
 orbs:
   foo: somenamespace/foo@1.2
 workflows:
-  version: 2
   build:
     jobs:
       - foo/bar:
@@ -58,7 +57,7 @@ workflows:
 The resulting configuration would look like this:
 
 ```yaml
-version: 2
+version: 2.1
 jobs:
   foo/bar:
     machine: true
@@ -73,7 +72,6 @@ jobs:
       - run:
           command: echo "upload artifact to s3"
 workflows:
-  version: 2
   build:
     jobs:
       - foo/bar

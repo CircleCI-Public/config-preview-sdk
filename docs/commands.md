@@ -83,13 +83,12 @@ commands:
 The above could be invoked in `config.yml` as:
 
 ```yaml
-version: 2
+version: 2.1
 
 orbs:
   s3tools: circleci/s3@1
 
 workflows:
-  version: 2
   build-test-deploy:
     jobs:
       - deploy2s3:

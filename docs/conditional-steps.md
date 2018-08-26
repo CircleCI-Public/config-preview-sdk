@@ -43,7 +43,7 @@ jobs:
 
 ```yaml
 # inside config.yml
-version: 2
+version: 2.1
 
 orbs:
   myorb: mynamespace/myorb@1.0.1
