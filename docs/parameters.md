@@ -15,7 +15,7 @@ commands:
         type: string
 
     steps:
-      - echo '<< parameters.foo >>'
+      - run: echo '<< parameters.foo >>'
 ```
 
 In the above example a value for the parameter `foo` can be passed when invoking the command. For instance, passing the parameter `foo` would look something like:
