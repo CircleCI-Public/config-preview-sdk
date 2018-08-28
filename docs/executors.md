@@ -1,4 +1,4 @@
-# Authoring and using Executors 
+# Authoring and using Executors
 _Reusable `executor` declarations are available in configuration version 2.1 and later_
 
 - [What _is_ an executor?](#what-is-an-executor)
@@ -12,7 +12,7 @@ Executors define the environment in which the steps of a job will be run. When d
 
 An executor definition includes the subset of the children keys of a `job` declaration related to setting the environment for a job to execute. This means it does _not_ include `steps`. That subset is one or more of the following keys:
 
-- `docker` or `machine` or `macos` 
+- `docker` or `machine` or `macos`
 - `environment`
 - `working_directory`
 - `shell`
@@ -34,13 +34,18 @@ jobs:
       - run: echo outside the executor
 ```
 
-In the above example the executor `my-executor` is passed as the single value of the key `executor`. Alternatively, you can pass `my-executor` as the value of a `name` key under `executor` -- this method is primarily employed when passing parameters to executor invocations (see below):
+In the above example the executor `my-executor` is passed as the single value of
+the key `executor`. If you wish to pass arguments to the executor, you can
+instead pass a map with a single key-value-pair: the key is the name of the
+executor you wish to invoke, and the value is a map of arguments you wish to
+pass to the executor.
 
 ```yaml
 jobs:
   my-job:
     executor:
-      name: my-executor
+      my-executor:
+        some: argument
     steps:
       - run: echo outside the executor
 ```
@@ -58,7 +63,7 @@ Imagine you have several jobs that you need to run in the same Docker image and 
 2. Use YAML anchors to achieve some reuse.
 3. Declare an executor with the values you want, and invoke it in your jobs.
 
-With an executor declaration your configuration might look something like: 
+With an executor declaration your configuration might look something like:
 
 **Without executors**
 ```yaml
@@ -73,7 +78,7 @@ jobs:
     steps:
       - checkout
       - run: echo "your build script would go here"
-      
+
   test:
     docker:
       - image: clojure:lein-2.8.1
@@ -85,7 +90,7 @@ jobs:
       - checkout
       - run: echo "your test commands would run here"
 ```
-    
+
 **Same Code, With executors**
 ```yaml
 executors:
@@ -96,14 +101,14 @@ executors:
     environment:
       MYSPECIALVAR: "my-special-value"
       MYOTHERVAR: "my-other-value"
-    
+
 jobs:
   build:
     executor: lein_exec
     steps:
       - checkout
       - run: echo "hello world"
-      
+
   test:
     executor: lein_exec
     environment:
@@ -164,7 +169,7 @@ executors:
     environment:
       ENV: ci
       TESTS: all
-    shell: /bin/bash    
+    shell: /bin/bash
     working_directory: ~/project
 
 jobs:
@@ -219,9 +224,9 @@ executors:
 jobs:
   build:
     executor:
-      name: python
-      tag: "2.7"
-      myspecialvar: "myspecialvalue"  
+      python:
+        tag: "2.7"
+        myspecialvar: "myspecialvalue"
 ```
 
 **The above would resolve to:**
@@ -235,4 +240,3 @@ jobs:
     environment:
       MYPRECIOUS: "myspecialvalue"
 ```
-
