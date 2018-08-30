@@ -18,7 +18,7 @@ We often hear that people want more off-the-shelf options to get their first use
 
 2. **Config as Data:** We use YAML because it provides a way to author a data structure with a reasonable balance between syntactic weight and expressiveness.
 
-> Having configuration be data rather than a programming language allows easy and reliable tooling for doing config syntax and schema validation, various static analysis and data tranformations that occur during the processing of your builds, and automated documentation with first-class metadata.
+> Having configuration be data rather than a programming language allows easy and reliable tooling for doing config syntax and schema validation, various static analysis and data transformations that occur during the processing of your builds, and automated documentation with first-class metadata.
 
 
 3. **Declarative of Build Behaviors:** The semantics of CircleCI config revolve around the core domain model of build execution inside our platform.
@@ -55,10 +55,10 @@ orbs:
 ```
 
 
-At the time you register 1.2.0 of `my-orb` the latest version of `foo-orb` will be flatteneded into `my-orb` version 1.2.0. If a new version of `foo-orb` is published it won't get incorporated into `my-orb` until you publish a new version. **NOTE:** _We recommend selecting the fully qualified version of the orbs that you import to ensure deterministic behavior._
+At the time you register 1.2.0 of `my-orb` the latest version of `foo-orb` will be flattened into `my-orb` version 1.2.0. If a new version of `foo-orb` is published it won't get incorporated into `my-orb` until you publish a new version. **NOTE:** _We recommend selecting the fully qualified version of the orbs that you import to ensure deterministic behavior._
 
 1. **One registry per CircleCI installation:** Orbs are specific to running CircleCI builds, so we decided to avoid the complexities and security surface area of having arbitrary registries.
-All orbs used in a CirlceCI build must be in the registry of the installation on which your build runs. 
+All orbs used in a CircleCI build must be in the registry of the installation on which your build runs. 
 1. **All orbs live in a namespace:** All orbs live in exactly one namespace.
 There is no "empty" namespace, nor are there reserved special defaults like "_" for CircleCI or "official" orbs. We are likely to introduce a Certified Orbs program or similar in the future, but that will offer first-class metadata on the orb, explicitly defining inclusion rather than relying on implied in a special namespace.
 1. **Revisions are immutable:** To prevent mysterious changes cropping up in the builds of those who use orbs, we do not allow changes to an orb revision once it has gone live.
