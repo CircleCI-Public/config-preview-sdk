@@ -33,9 +33,9 @@ We are considering the new build processing system in preview until we have solv
 * ~All jobs run inside a Workflow part 1: workflow auto-wrapping for jobs called `build`~
 * ~Solve for full BitBucket support - API and webhooks~
 * ~Auto-cancel redundant builds (including workflows)~
+* ~Solve UI for Rerun of a job (rerun the workflow of the job)~
 * TODO: All jobs run inside a Workflow part 2: Fully backwards-compatible with existing API calls to trigger arbitrary jobs
 * TODO: Make the new build triggering API endpoint accept parameters and workflow/job filters
-* TODO: Solve UI for Rerun of a job (rerun the workflow of the job)
 
 ## IMPORTANT: 2.1 Configuration Caveats
 With the introduction of build processing we are making available version 2.1 of build configuration.
