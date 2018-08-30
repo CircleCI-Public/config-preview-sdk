@@ -13,7 +13,7 @@ Using an orb in your build configuration might look something like:
 ```yaml
 version: 2.1
 orbs:
-  s3: circleci/aws-s3@1
+  s3: circleci/aws-s3@1.4.2
 
 jobs:
   deploy:
