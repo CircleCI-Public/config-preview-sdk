@@ -45,7 +45,7 @@ Up to 1023 of the following characters:
 Examples of valid development orb tags:
 - Valid:
   - "dev:mybranch"
-  - "dev:_20180901"
+  - "dev:2018_09_01"
   - "dev:1.2.3-rc1"
 - Invalid
   - "dev: 1" (No spaces allowed)
