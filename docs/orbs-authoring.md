@@ -18,7 +18,7 @@ Namespaces are owned by organizations. Only organization administrators can crea
 Organizations are, by default, limited to claiming only one namespace. This policy is designed to limit name squatting and namespace noise. If you require more than one namespace please contact your account team at CircleCI.
 
 ### Dev vs. Production Orbs
-Versions of orbs can be added to the registry either as development versions or production versions. Production versions area always a semver like `1.5.3`, and development versions can be tagged with a string and are always prefixed with `dev:`.
+Versions of orbs can be added to the registry either as development versions or production versions. Production versions are always a semver like `1.5.3`, and development versions can be tagged with a string and are always prefixed with `dev:`.
 
 #### Dev and production orbs have different security profiles:
 
