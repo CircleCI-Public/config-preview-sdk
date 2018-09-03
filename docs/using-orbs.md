@@ -36,8 +36,8 @@ Orbs are published with the standard 3-number [semantic versioning system](https
 Examples of orb version declarations and their meaning:
 
 1. `circleci/python@volatile` - use the latest version of the Python orb in the registry at the time a build is triggered.
-2. `circleci/python@2.*.*` - use the latest version of version 2.x.x of the Python orb .
-3. `circleci/python@2.4.*` - use the latest version of version 2.4.x of the Python orb .
+2. `circleci/python@2` - use the latest version of version 2.x.y of the Python orb .
+3. `circleci/python@2.4` - use the latest version of version 2.4.x of the Python orb .
 4. `circleci/python@3.1.4` - use exactly version 3.1.4 of the Python orb.
 
 ### Using dev versions
