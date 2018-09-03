@@ -6,7 +6,9 @@ Orbs can be authored [inline](inline-orbs.md) in your config.yml file or authore
 ## Concepts in Orb Publishing
 
 ### Orb Registry
-Each installation of CircleCI has a single orb registry. The registry on circleci.com serves as the master source for all certified namespaces and orbs, though each server installation of CircleCI has its own registry that operators can control (TODO: server support for orbs and the orb registry is under development, so as of September 1st, 2018 this document applies to circleci.com).
+Each installation of CircleCI has a single orb registry. The registry on circleci.com serves as the master source for all certified namespaces and orbs and is the only orb registry users of circleci.com can use.
+
+When orb features come to the server installation of CircleCI, each installation will have its own registry that operators can control. NOTE: as of September 2018 the orb features are not yet supported on server installations (TODO: update this doc if orbs are now on server installs).
 
 ### Namespaces
 Namespaces are used to organize a set of orbs. Each namespace has a unique and immutable name within the registry, and each orb in a namespace has a unique name. For instance, the orb `circleci/rails` means the `rails` orb in the `circleci` namespace, which can coexist in the registry with an orb called `somenamespace/rails` because they are in separate namespaces. 
