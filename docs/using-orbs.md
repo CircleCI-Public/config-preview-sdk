@@ -31,9 +31,9 @@ Orb URIs have the format:
 Orb namespaces may have restrictions that prevent you from accesing orbs in those namespaces based on whether the build and the scope of the namespace are congruent.
 
 ## Semantic Versioning in Orbs
-Orbs are published with the standard 3-number [semantic versioning system](https://semver.org/), `major.minor.patch`, and orb authors need to adhere to semantic versioning. Within `config.yml`, you can specify wildcard version ranges to resolve orbs. You can also use the special string `volatile` to pull in whatever the highest version number is at time your build runs.  
+Orbs are published with the standard 3-number [semantic versioning system](https://semver.org/), `major.minor.patch`, and orb authors need to adhere to semantic versioning. Within `config.yml`, you can specify wildcard version ranges to resolve orbs. You can also use the special string `volatile` to pull in whatever the highest version number is at time your build runs. For instance, when `mynamespace/some-orb@8.2.0` exists, and `mynamespace/some-orb@8.1.24` and `mynamespace/some-orb@8.0.56` are published after `8.2.0`, volatile will still refer to `mynamespace/some-orb@8.2.0` as the highest semver.
 
-For instance, the versions below have the following meaning:
+Examples of orb version declarations and their meaning:
 
 1. `circleci/python@volatile` - use the latest version of the Python orb in the registry at the time a build is triggered.
 2. `circleci/python@2.*.*` - use the latest version of version 2.x.x of the Python orb .
