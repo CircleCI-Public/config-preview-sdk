@@ -1,0 +1,4 @@
+steps:
+  - nested_inline/check_bash_version
+  - run: echo "hello world inline"
+

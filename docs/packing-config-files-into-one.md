@@ -75,3 +75,8 @@ Some notes about the above example
 - The top level `foo` is not part of the collapsed result. These two commands produce identical yaml:
   - `cd foo && circleci config collapse .`
   - `circleci config collapse foo`
+
+## Example with a config.yml
+See [The example_config_pack folder](./example_config_pack) to see how
+`circleci config pack` could be used with git commit hooks to generate a
+single config.yml from multiple yaml sources.
