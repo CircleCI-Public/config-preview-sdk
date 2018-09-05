@@ -92,6 +92,7 @@ You can use this template to get started with authoring orbs. It includes each o
 
 
 ```yaml
+version: 2.1
 orbs:
   inline_example:
     jobs:
@@ -118,9 +119,8 @@ orbs:
             type: string
             default: "2.4"
         docker:
-          - image: circleci/ruby:<<parameters.number>>
+          - image: circleci/ruby:<<parameters.version>>
 
-version: 2.1
 workflows:
   build-test-deploy:
     jobs:
