@@ -88,7 +88,7 @@ For full reference use the `help` command inside the CLI, or visit [https://circ
 
 ### Getting started template
 
-You can use this template to get started with authoring orbs. It includes each of the three top-level concepts of orbs.  Any orb can be equally expressed as an inline orb definition.  It will generally be simpler to iterate on an inline orb and use `circleci config process` to check whether your orb usage matches your expectation.
+You can use this template to get started with authoring orbs. It includes each of the three top-level concepts of orbs.  Any orb can be equally expressed as an inline orb definition.  It will generally be simpler to iterate on an inline orb and use `circleci config process .circleci/config.yml` to check whether your orb usage matches your expectation.
 
 
 ```yaml
