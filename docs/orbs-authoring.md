@@ -86,4 +86,49 @@ The `circleci` CLI has several handy commands for managing your orb publishing p
 
 For full reference use the `help` command inside the CLI, or visit [https://circleci-public.github.io/circleci-cli/circleci_orb.html](https://circleci-public.github.io/circleci-cli/circleci_orb.html) (TODO: make this a link to the main docs once that info is there).
 
+### Getting started template
+
+You can use this template to get started with authoring orbs. It includes each of the three top-level concepts of orbs.  Any orb can be equally expressed as an inline orb definition.  It will generally be simpler to iterate on an inline orb and use `circleci config process` to check whether your orb usage matches your expectation.
+
+
+```yaml
+orbs:
+  inline_example:
+    jobs:
+      my_inline_job:
+        parameters:
+          greeting_name:
+            type: string
+            default: olleh
+        executor: my_inline_executor
+        steps:
+          - my_inline_command:
+              name: <<parameters.greeting_name>>
+    commands:
+      my_inline_command:
+        parameters:
+          name:
+            type: string
+        steps:
+          - run: echo "hello <<parameters.name>>, from the inline command"
+    executors:
+      my_inline_executor:
+        parameters:
+          version:
+            type: string
+            default: "2.4"
+        docker:
+          - image: circleci/ruby:<<parameters.number>>
+
+version: 2.1
+workflows:
+  build-test-deploy:
+    jobs:
+      - inline_example/my_inline_job:
+          name: build
+      - inline_example/my_inline_job:
+          name: build2
+          greeting_name: world
+
+```
 
