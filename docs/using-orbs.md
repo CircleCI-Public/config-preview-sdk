@@ -1,4 +1,4 @@
-# Using Orbs in CirlceCI Configuration
+# Using Orbs in CircleCI Configuration
 _The `orbs` stanza is available in configuration version 2.1 and later._
 
 Orbs are packages of CircleCI configuration shared across projects. Orbs are made available for use in configuration through the `orbs` key in the top level of your config.yml.
@@ -28,7 +28,7 @@ Orb URIs have the format:
 
 `[namespace]/[orb]@[version]`
 
-Orb namespaces may have restrictions that prevent you from accesing orbs in those namespaces based on whether the build and the scope of the namespace are congruent.
+Orb namespaces may have restrictions that prevent you from accessing orbs in those namespaces based on whether the build and the scope of the namespace are congruent.
 
 ## Semantic Versioning in Orbs
 Orbs are published with the standard 3-number [semantic versioning system](https://semver.org/), `major.minor.patch`, and orb authors need to adhere to semantic versioning. Within `config.yml`, you can specify wildcard version ranges to resolve orbs. You can also use the special string `volatile` to pull in whatever the highest version number is at time your build runs. For instance, when `mynamespace/some-orb@8.2.0` exists, and `mynamespace/some-orb@8.1.24` and `mynamespace/some-orb@8.0.56` are published after `8.2.0`, volatile will still refer to `mynamespace/some-orb@8.2.0` as the highest semver.
@@ -41,7 +41,7 @@ Examples of orb version declarations and their meaning:
 4. `circleci/python@3.1.4` - use exactly version 3.1.4 of the Python orb.
 
 ### Using dev versions
-While all production orbs must be published securely by organization admins, dev orbs allow your team broader lattitude. See the [Orb Authoing and Publishing doc](orbs-authoring.md) for details of how to create your own dev orbs. 
+While all production orbs must be published securely by organization admins, dev orbs allow your team broader latitude. See the [Orb Authoing and Publishing doc](orbs-authoring.md) for details of how to create your own dev orbs. 
 
 A dev version must be referenced entirely, like `mynamespace/myorb@dev:mybranch`. Whereas production orbs allow wildcard semver references, there are no shorthand conveniences for dev versions. 
 
