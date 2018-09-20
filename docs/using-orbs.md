@@ -41,7 +41,7 @@ Examples of orb version declarations and their meaning:
 4. `circleci/python@3.1.4` - use exactly version 3.1.4 of the Python orb.
 
 ### Using dev versions
-While all production orbs must be published securely by organization admins, dev orbs allow your team broader latitude. See the [Orb Authoing and Publishing doc](orbs-authoring.md) for details of how to create your own dev orbs. 
+While all production orbs must be published securely by organization admins, dev orbs allow your team broader lattitude. See the [Orb Authoring and Publishing doc](orbs-authoring.md) for details of how to create your own dev orbs. 
 
 A dev version must be referenced entirely, like `mynamespace/myorb@dev:mybranch`. Whereas production orbs allow wildcard semver references, there are no shorthand conveniences for dev versions. 
 
