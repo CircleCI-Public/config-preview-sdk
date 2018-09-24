@@ -28,7 +28,7 @@ Orb URIs have the format:
 
 `[namespace]/[orb]@[version]`
 
-Orb namespaces may have restrictions that prevent you from accessing orbs in those namespaces based on whether the build and the scope of the namespace are congruent.
+Orb namespaces may have restrictions that prevent you from accesing orbs in those namespaces based on whether the build and the scope of the namespace are congruent.
 
 ## Semantic Versioning in Orbs
 Orbs are published with the standard 3-number [semantic versioning system](https://semver.org/), `major.minor.patch`, and orb authors need to adhere to semantic versioning. Within `config.yml`, you can specify wildcard version ranges to resolve orbs. You can also use the special string `volatile` to pull in whatever the highest version number is at time your build runs. For instance, when `mynamespace/some-orb@8.2.0` exists, and `mynamespace/some-orb@8.1.24` and `mynamespace/some-orb@8.0.56` are published after `8.2.0`, volatile will still refer to `mynamespace/some-orb@8.2.0` as the highest semver.
