@@ -16,7 +16,7 @@ orbs:
 
 The above would make three orbs available, one for each key in the map and named the same as the keys in the map. 
 
-You can also write [inline orbs](inline-orbs), which can be especially useful during development of a new orb. Because the values of the above keys under `orbs` are all scalar values they are assumed to imports based on the orb URI format.
+You can also write [inline orbs](inline-orbs.md), which can be especially useful during development of a new orb. Because the values of the above keys under `orbs` are all scalar values they are assumed to imports based on the orb URI format.
 
 ## Certified Orbs vs. 3rd Party Orbs
 Certified orbs are those that CircleCI has built or has reviewed and approved as part of the features of the CircleCI platform. Any project may use certified orbs in configuration version 2.1 and higher. 
