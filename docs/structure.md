@@ -10,6 +10,8 @@ Orbs are composed of one or more of the following elements, each of which repres
 * [jobs](jobs.md)
 * [executors](executors.md)
 
+Additionally, [usage examples](usage-examples.md) may also be provided for documentation purposes.
+
 An example orb:
 ```yaml
 # foo orb
