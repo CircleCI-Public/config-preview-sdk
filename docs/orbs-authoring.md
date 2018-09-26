@@ -3,6 +3,9 @@ This document largely covers the tooling and flow of authoring and publishing yo
 
 Orbs can be authored [inline](inline-orbs.md) in your config.yml file or authored separately and then published to to the orb registry for reuse across projects. This document is largely about how to publish orbs for use across projects. For inline orbs see the [Writing Inline Orbs](inline-orbs.md) document.
 
+## Pre-requisites
+To start orb publishing you will need to opt-in to the new 3rd Party Software terms and turn on orb publishing for your organization. Only an organization admin can do this from the Settings page on your organization inside CircleCI under the Security tab.
+
 ## Concepts in Orb Publishing
 
 ### Orb Registry
