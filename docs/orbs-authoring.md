@@ -74,15 +74,19 @@ In general, we prefer to never delete production orbs that were published as Ope
 ### Using the CLI to author and publish orbs
 The `circleci` CLI has several handy commands for managing your orb publishing pipeline. The simplest way to learn the CLI is to [install it](https://circleci.com/docs/2.0/local-cli/#installing-the-circleci-public-cli-from-scratch-on-macos-and-linux-distros) and run `circleci help`. Below are some of the most pertinent commands for publishing orbs:
 
-`circleci namespace create NAME VCS-TYPE ORG-NAME [flags]`
+```
+circleci namespace create <name> <vcs-type> <org-name> [flags]
 
-`circleci orb create NAMESPACE ORB [flags]`
+circleci orb create <namespace>/<orb> [flags]
 
-`circleci orb validate PATH [flags]`
+circleci orb validate <path> [flags]
 
-`circleci orb publish dev PATH NAMESPACE ORB LABEL [flags]`
+circleci orb publish <path> <namespace>/<orb>@<version> [flags]
 
-`circleci orb publish promote NAMESPACE ORB LABEL SEGMENT [flags]`
+circleci orb publish increment <path> <namespace>/<orb> <segment> [flags]
+
+circleci orb publish promote <namespace>/<orb>@<version> <segment> [flags]
+```
 
 For full reference use the `help` command inside the CLI, or visit [https://circleci-public.github.io/circleci-cli/circleci_orb.html](https://circleci-public.github.io/circleci-cli/circleci_orb.html) (TODO: make this a link to the main docs once that info is there).
 
