@@ -5,6 +5,7 @@ Each orb is packaged as a single file. Each orb also has its own namespace to us
 ## Anatomy of an orb
 Orbs are composed of one or more of the following elements, each of which represents a type of invocable element in CircleCI project configuration:
 
+* an optional `description` string
 * [commands](commands.md)
 * [jobs](jobs.md)
 * [executors](executors.md)
@@ -12,6 +13,7 @@ Orbs are composed of one or more of the following elements, each of which repres
 An example orb:
 ```yaml
 # foo orb
+description: A hello-world orb example
 commands:
   echo:
     steps:
