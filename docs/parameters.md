@@ -1,4 +1,4 @@
-# Using Parameters in CircleCI Configuration Elements
+# Using parameters in CircleCI configuration elements
 _The `parameters` declaration is available in configuration version 2.1 and later._
 
 Many config elements can be authored to be invocable in your `config.yml` file with specified parameters. Parameters are declared by name as the keys in a map that are all immediate children of the `parameters` key under a job, command, or executor. 
@@ -39,7 +39,7 @@ A parameter can have the following keys as immediate children:
 | type        | Required. Currently "string", "boolean", "enum", and "steps" are supported                           | N/A           |
 | default     | The default value for the parameter. If not present, the parameter is implied to be required. | N/A           |
 
-## Parameter Types
+## Parameter types
 
 This section describes the 
 

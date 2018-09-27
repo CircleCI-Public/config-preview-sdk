@@ -1,4 +1,4 @@
-# Authoring and Publishing Orbs
+# Authoring and publishing orbs
 This document largely covers the tooling and flow of authoring and publishing your own orbs to the orb registry. Check out the [documentation on using orbs](using-orbs.md) for more information on how to pull orbs into your build configuration.
 
 Orbs can be authored [inline](inline-orbs.md) in your config.yml file or authored separately and then published to to the orb registry for reuse across projects. This document is largely about how to publish orbs for use across projects. For inline orbs see the [Writing Inline Orbs](inline-orbs.md) document.
@@ -6,9 +6,9 @@ Orbs can be authored [inline](inline-orbs.md) in your config.yml file or authore
 ## Prerequisites
 To start orb publishing you will need to opt-in to the new 3rd Party Software terms and turn on orb publishing for your organization. Only an organization admin can do this from the Settings page on your organization inside CircleCI. Under Settings look for the Security tab where you will find the form for opting in.
 
-## Concepts in Orb Publishing
+## Concepts in orb publishing
 
-### Orb Registry
+### Orb registry
 Each installation of CircleCI has a single orb registry. The registry on circleci.com serves as the master source for all certified namespaces and orbs and is the only orb registry users of circleci.com can use.
 
 When orb features come to the server installation of CircleCI, each installation will have its own registry that operators can control. NOTE: as of September 2018 the orb features are not yet supported on server installations (TODO: update this doc if orbs are now on server installs).
@@ -20,7 +20,7 @@ Namespaces are owned by organizations. Only organization administrators can crea
 
 Organizations are, by default, limited to claiming only one namespace. This policy is designed to limit name squatting and namespace noise. If you require more than one namespace please contact your account team at CircleCI.
 
-### Dev vs. Production Orbs
+### Dev vs. production orbs
 Versions of orbs can be added to the registry either as development versions or production versions. Production versions are always a semver like `1.5.3`, and development versions can be tagged with a string and are always prefixed with `dev:`.
 
 #### Dev and production orbs have different security profiles:
