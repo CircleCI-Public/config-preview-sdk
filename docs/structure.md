@@ -1,14 +1,15 @@
 # Orb structure
 
-Each orb is packaged as a single file. Each orb also has its own namespace to use when invoking its elements. Orbs are authored with similar YAML syntax to the base CircleCI build configuration.
+Orbs are authored with similar YAML syntax to the base CircleCI build configuration. Each orb also has its own namespace to use when invoking its elements. Orbs are typically packaged as a single file, but they can also be locally defined inside configs or other orbs, and there is support for [packing multiple files together](packing-config-files-into-one.md) for large orbs.
 
 ## Anatomy of an orb
 Orbs are composed of one or more of the following elements, each of which represents a type of invocable element in CircleCI project configuration:
 
-* an optional `description` string
+* `description` (a string)
 * [commands](commands.md)
 * [jobs](jobs.md)
 * [executors](executors.md)
+* [orbs](inline-orbs.md)
 
 An example orb:
 ```yaml
