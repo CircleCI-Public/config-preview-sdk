@@ -1,8 +1,8 @@
 # Orb structure
 
-Each Orb is packaged as a single file. Each Orb also has its own namespace to use when invoking its elements. Orbs are authored with similar YAML syntax to the base CircleCI build configuration.
+Each orb is packaged as a single file. Each orb also has its own namespace to use when invoking its elements. Orbs are authored with similar YAML syntax to the base CircleCI build configuration.
 
-## Anatomy of an Orb
+## Anatomy of an orb
 Orbs are composed of one or more of the following elements, each of which represents a type of invocable element in CircleCI project configuration:
 
 * [commands](commands.md)
@@ -11,7 +11,7 @@ Orbs are composed of one or more of the following elements, each of which repres
 
 An example orb:
 ```yaml
-# foo Orb
+# foo orb
 commands:
   echo:
     steps:
@@ -29,7 +29,7 @@ Our sample orb above has a single command name `echo` and a single job named `he
 
 Orb, command, job, executor, and parameter names can only contain lowercase letters a-z, digits, and _ and -, and must start with a letter.
 
-### Scoping considerations in Orb invocation
+### Scoping considerations in orb invocation
 
 An orb `foo` effectively has a namespace called `foo` for use in your build configuration, and everything directly inside an orb is considered local to that orb.
 

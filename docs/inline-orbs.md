@@ -1,4 +1,4 @@
-# Writing Inline Orbs
+# Writing inline orbs
 _The `orbs` stanza is available in configuration version 2.1 and later_
 
 Inline orbs can be handy during development of an orb or as a convenience for namespacing jobs and commands in lengthy configurations, particularly if you later intend to share the orb.

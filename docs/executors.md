@@ -1,4 +1,4 @@
-# Authoring and using Executors 
+# Authoring and using executors 
 _Reusable `executor` declarations are available in configuration version 2.1 and later_
 
 - [What _is_ an executor?](#what-is-an-executor)

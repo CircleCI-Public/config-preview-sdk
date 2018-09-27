@@ -1,4 +1,4 @@
-# Packing Config Files
+# Packing config files
 
 `circleci config pack` converts a filesystem tree into a single yaml file
 based on directory structure and file contents. It prints the merged contents
