@@ -35,7 +35,7 @@ Start with a simple orb in `src/orb.yml`
 version: 2.1
 
 executors:
-	default:
+  default:
   	parameters:
     	tag:
       	type: string
@@ -44,7 +44,7 @@ executors:
         - image:  circleci/buildpack-deps:<< parameters.tag >>
 
 jobs:
-	hello-build:
+  hello-build:
   	executor: default
     steps:
     	- run: echo "Hello, build!"
