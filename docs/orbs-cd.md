@@ -1,11 +1,16 @@
 # CD Techniques
 
-_Placeholder for more information regarding CD_
+_This is a draft for comment as we continue to develop techniques and features in orb publishing_
 
 ## The `circleci/orb-tools` orb:
 
 In order to aid you in your CD efforts we have put together an orb-tools orb you can
 reference while building your own orb.
+
+The `orb-tools` orb is a shortcut, but not a pre-requisite to orb publishing.
+All publishing activity can be conducted directly from the [CircleCI CLI](https://github.com/CircleCI-Public/circleci-cli).
+
+[comment]: # (TODO [for docs team]: the link below should point to the registry docs once that is live)
 
 Find the full source [here](https://github.com/CircleCI-Public/circleci-orbs/blob/master/src/orb-tools/orb.yml)
 
