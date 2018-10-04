@@ -41,12 +41,23 @@ The `orb-tools` orb provides a number of jobs and commands that may be useful to
     - _orb-name_: "Name of the orb to increment.;"
     - _segment_: "The semver segment to increment 'major' or 'minor' or 'patch'"
     - _workspace-path_: "The directory relative to the workspace root where the orb file will be found. Should end in a trailing /"
-    - _token-variable_: "The env var containing your token. Pass this as a literal string such as `$ORB_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration."
-- `orb-tools/publish-orb`
+    - _release-token-variable_: "The env var containing your release token. Pass this as a literal string such as `$ORB_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration. If omitted it's assumed the CLI has already been setup with a valid token."
+- `orb-tools/publish-dev-orb`
   - parameters:
-    - _orb-ref_: "A fully-qualified reference to an orb. This takes the form namespace/orb@version. NOTE: To publish a dev version prefix the version with 'dev:' like so namespace/orb@dev:label"
+    - _namespace_: "The namespace where this should be published."
+    - _orb-name_: "The orb name where this should be published."
+    - _version_: "The semver to use when publishing the orb (eg: if you pass `1.2.3`)"
+    - _release-token-variable_: "The env var containing your release token. Pass this as a literal string such as `$ORB_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration. If omitted it's assumed the CLI has already been setup with a valid token."
     - _workspace-path_: "The directory relative to the workspace root where the orb file will be found. Should end in a trailing /"
-    - _token-variable_: "The env var containing your token. Pass this as a literal string such as `$ORB_DEV_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration."
+    - _file-name_: "The name of the file where the packed string is stored. In most cases you can leave the default value."
+    - _do-validation_: "Boolean for whether to do validation. Default is true."
+- `orb-tools/publish-release-orb`
+  - parameters:
+    - _namespace_: "The namespace where this should be published."
+    - _orb-name_: "The orb name where this should be published."
+    - _label_: "The label to use when publishing the dev orb (eg: if you pass `foo` you will publish to `dev:foo`)"
+    - _dev-token-variable_: "The env var containing your dev token. Pass this as a literal string such as `$ORB_DEV_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration. If omitted it's assumed the CLI has already been setup with a valid token."
+    - _workspace-path_: "The directory relative to the workspace root where the orb file will be found. Should end in a trailing /"
     - _file-name_: "The name of the file where the packed string is stored. In most cases you can leave the default value."
     - _do-validation_: "Boolean for whether to do validation. Default is true."
 
@@ -59,16 +70,18 @@ orb
 version: 2.1
 
 orbs:
-  orb-utils: circleci/orb-tools@volatile
+  orb-tools: circleci/orb-tools@volatile
 workflows:
   btd:
     jobs:
-      - orb-utils/validate-orb:
+      - orb-tools/validate-orb:
           orb-path: ./src/orb.yml
           workspace-path: ./workspace/
-      - orb-utils/publish-orb:
-          orb-ref: circleci/hello-build@dev:${CIRCLE_BRANCH} # remove `dev:` and use a semver to release a production version
+      - orb-tools/publish-dev-orb:
+          namespace: circleci
+          orb-name: hello-build
+          label: ${CIRCLE_BRANCH}
+          dev-token-variable: "$CIRCLECI_DEV_API_TOKEN"
           workspace-path: ./workspace/
-          token-variable: "$CIRCLECI_API_TOKEN"
           requires: [validate-orb]
 ```
