@@ -83,5 +83,5 @@ workflows:
           label: ${CIRCLE_BRANCH}
           dev-token-variable: "$CIRCLECI_DEV_API_TOKEN"
           workspace-path: ./workspace/
-          requires: [validate-orb]
+          requires: [orb-tools/validate-orb]
 ```
