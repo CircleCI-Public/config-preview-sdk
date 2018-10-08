@@ -86,5 +86,3 @@ workflows:
           requires: [orb-tools/validate-orb]
 ```
 In this example, the `btd` workflow runs the `orb-tools/validate-orb` job first. If the orb is indeed valid, the next step will execute, and `orb-tools/publish-dev-orb` will execute.
-
-Note that, because the compiled code is run through CircleCI's workflow conductor, `orb-tools/publish-dev-orb` _requires_ `validate-orb`, instead of `orb-tools/validate-orb`.
