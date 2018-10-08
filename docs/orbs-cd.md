@@ -86,3 +86,10 @@ workflows:
           requires: [orb-tools/validate-orb]
 ```
 In this example, the `btd` workflow runs the `orb-tools/validate-orb` job first. If the orb is indeed valid, the next step will execute, and `orb-tools/publish-dev-orb` will execute.
+
+> Tip: The Configuration tab on the Jobs page shows the expanded and original yaml configuration.
+
+At this time, the easiest way to validate the presence of a dev orb from the CLI is to check its source file. In this case, that would be:
+```
+circleci orb source circleci/hello-build@dev:${CIRCLE_BRANCH}
+```
