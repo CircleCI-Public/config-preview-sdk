@@ -117,7 +117,7 @@ For details on parameter naming rules, see the [naming section in the structure 
 
 ## Invoking the same job multiple times
 
-A single configuration may invoke a job many times. At configuration processing time during build ingestion, CircleCI will auto-generate names if none are provided.  If you care about the name of the duplicate jobs, they can be explicitly named with the `name` key.
+A single configuration may invoke a job many times. At configuration processing time during build ingestion, CircleCI will auto-generate names if none are provided.  If you care about the name of the duplicate jobs, they can be explicitly named with the `name` key. A job that is invoked in multiple workflows in the same configuration would also need to be explicitly named with a unique name across workflows, to avoid having a different auto-generated name per workflow.
 
 >NOTE: The user must explicitly name repeat jobs when a repeat job should be upstream of another job in a workflow (ie: if the job is used under the `requires` key of a job invocation in a workflow you will need to name it).
 
