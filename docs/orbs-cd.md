@@ -87,4 +87,15 @@ workflows:
 ```
 In this example, the `btd` workflow runs the `orb-tools/validate-orb` job first. If the orb is indeed valid, the next step will execute, and `orb-tools/publish-dev-orb` will execute.
 
-Note that, because the compiled code is run through CircleCI's workflow conductor, `orb-tools/publish-dev-orb` _requires_ `validate-orb`, instead of `orb-tools/validate-orb`.
+> Tip: The Configuration tab on the Jobs page shows the expanded and original yaml configuration.
+
+#### Permissions
+This example assumes that you have set up a Project API token `"$CIRCLECI_DEV_API_TOKEN"` for the active project that references a Personal API token. For more on setting up CircleCI tokens, see our [Managing API Tokens](https://circleci.com/docs/2.0/managing-api-tokens/) documentation.
+
+#### Published dev orb
+When `orb-tools/publish-dev-orb` succeeds, the Job input will contain a success message that the new orb has been published.
+
+If you would like to view the orb, the easiest way to access the dev orb from the CLI is to check its source file:
+```
+circleci orb source circleci/hello-build@dev:${CIRCLE_BRANCH}
+```
