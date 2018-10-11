@@ -48,7 +48,7 @@ The `orb-tools` orb provides a number of jobs and commands that may be useful to
     - _namespace_: The namespace where this should be published.
     - _orb-name_: The orb name where this should be published.
     - _version_: The semver to use when publishing the orb (eg: if you pass `1.2.3`).
-    - _release-token-variable_: The env var containing your release token. Pass this as a literal string such as `$ORB_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration. If omitted it's assumed the CLI has already been setup with a valid token.
+    - _dev-token-variable_: The env var containing your dev token. Pass this as a literal string such as `$ORB_DEV_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration. If omitted it's assumed the CLI has already been setup with a valid token.
     - _workspace-path_: The directory relative to the workspace root where the orb file will be found. Should end in a trailing `/`.
     - _file-name_: The name of the file where the packed string is stored. In most cases you can leave the default value.
     - _do-validation_: Boolean for whether to do validation. Default is `true`.
@@ -57,7 +57,7 @@ The `orb-tools` orb provides a number of jobs and commands that may be useful to
     - _namespace_: The namespace where this should be published.
     - _orb-name_: The orb name where this should be published.
     - _label_: The label to use when publishing the dev orb (eg: if you pass `foo` you will publish to `dev:foo`).
-    - _dev-token-variable_: The env var containing your dev token. Pass this as a literal string such as `$ORB_DEV_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration. If omitted it's assumed the CLI has already been setup with a valid token.
+    - _release-token-variable_: The env var containing your release token. Pass this as a literal string such as `$ORB_PUBLISHING_TOKEN`. Do not paste the actual token into your configuration. If omitted it's assumed the CLI has already been setup with a valid token.
     - _workspace-path_: The directory relative to the workspace root where the orb file will be found. Should end in a trailing `/`.
     - _file-name_: The name of the file where the packed string is stored. In most cases you can leave the default value.
     - _do-validation_: Boolean for whether to do validation. Default is true.
