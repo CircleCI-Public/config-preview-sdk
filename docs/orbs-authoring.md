@@ -46,21 +46,17 @@ Development orbs are tagged with the format `dev:<< your-string >>`. Production 
 
 In development orbs, the string label given by the user has the following restrictions:
 
-Up to 1023 of the following characters:
-  - Numbers `0-9`
-  - Lowercase letters `a-z`
-  - Dashes `-`
-  - Underscores `_`
-  - Periods `.`
+Up to 1023 non-whitespace characters.
 
 Examples of valid development orb tags:
 - Valid:
   - "dev:mybranch"
   - "dev:2018_09_01"
   - "dev:1.2.3-rc1"
+  - "dev:myinitials/mybranch"
+  - "dev:myVERYIMPORTANTbranch"
 - Invalid
   - "dev: 1" (No spaces allowed)
-  - "dev:A" (No capital letters)
   - "1.2.3-rc1" (No leading "dev:")
 
 In production orbs you must use the form `X.Y.Z` where `X` is a "major" version, `Y` is a "minor" version, and `Z` is a "patch" version. For instance, 2.4.0 implies the major version 2, minor version 4, and the patch version of 0. 
