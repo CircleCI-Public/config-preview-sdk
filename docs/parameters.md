@@ -56,7 +56,7 @@ commands:
         type: string
         default: docs
     steps:
-      - cp *.md << destination >>
+      - cp *.md << parameters.destination >>
 ```
 
 Strings should be quoted if they would otherwise represent another type (such as boolean or number) or if they contain characters that have special meaning in yaml. In all other instances, quotes are optional.
@@ -74,7 +74,7 @@ commands:
         type: boolean
         default: false
     steps:
-      - ls <<# all >> -a <</ all >>
+      - ls <<# parameters.all >> -a <</ parameters.all >>
 ```
 
 Boolean parameter evaluation is based on the [values specified in YAML 1.1][http://yaml.org/type/bool.html]:
