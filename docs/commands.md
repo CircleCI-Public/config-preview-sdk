@@ -1,10 +1,10 @@
 # Authoring and using commands in CircleCI configuration
 _The `commands` stanza is available in configuration version 2.1 and later_
 
-Commands are reusable sets of steps that can be invoked with specific parameters inside a job. For instance, `checkout` and `run` are considered built-in commands. You may also author your own commands or use those authored by others.
+Commands are reusable sets of steps that can be invoked with specific parameters inside a job. For example, `checkout` and `run` are considered built-in commands. You may also author your own commands or use commands authored by others.
 
 ## Using commands
-Commands can be invoked as steps in a job. For instance, to invoke the command `sayhello`, passing it a parameter `to` you would write:
+Commands can be invoked as steps in a job. For example, to invoke the command `sayhello`, you would pass the parameter `to` like the example shown below:
 
 ```yaml
 jobs:
@@ -22,13 +22,13 @@ A command definition is YAML that defines metadata, parameters, and a sequence o
 ### Command syntax
 A command can have the following immediate children keys as a map:
 
-- **description:** (optional) A string that describes the purpose of the command, used for generating documentation.
+- **description:** (optional) A string that describes the purpose of the command. This is used for generating documentation.
 - **parameters:** (optional) A map of parameter keys, each of which adheres to the [parameter](parameters.md) spec.
 - **steps:** (required) A sequence of steps run inside the calling job of the command.
 
 ### Defining your commands
 
-Commands are declared under the `commands` key of a `config.yml` or `orb.yml` file. For instance, to make a command called `sayhello` it might look like:
+Commands are declared under the `commands` key of a `config.yml` or `orb.yml` file. For example, to make a command called `sayhello` it might look like:
 
 ```yaml
 commands:
@@ -45,7 +45,7 @@ commands:
 When invoking a command, the steps of that command are inserted where it's invoked. Commands can only be invoked as part of the sequence under `steps` in a job.
 
 ### Invoking other commands in your command
-Commands can use other commands in the scope of execution. For instance, if a command is declared inside your Orb it can use other commands in that orb. It can also use commands defined in other orbs that you have imported (e.g. `some-orb/some-command`).
+Commands can use other commands in the scope of execution. For example, if a command is declared inside your Orb it can use other commands in that orb. It can also use commands defined in other orbs that you have imported (e.g. `some-orb/some-command`).
 
 ## Built-in commands
 
@@ -55,11 +55,11 @@ CircleCI has several built-in commands available to all circleci.com customers a
   * `setup_remote_docker`
   * `save_to_workspace`
 
-> NOTE: Built-in commands are implicitly in the empty scope and are thus syntactically equivalent to primitives such as `run`). This _may_ change in future versions of configuration but is true to maintain compatibility with version `2` configuration.
+> NOTE: Built-in commands are implicitly in the empty scope and are thus syntactically equivalent to primitives such as `run`. This _may_ change in future versions of configuration but is true to maintain compatibility with version `2` configuration.
 
 ## Examples
 
-The following is a an example of part of an "s3tools" orb defining a command called "s3sync":
+The example shown below illustrates part of an "s3tools" orb defining a command called "s3sync":
 
 ```yaml
 # s3tools orb
@@ -80,7 +80,7 @@ commands:
           command: aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>"
 ```
 
-The above could be invoked in `config.yml` as:
+The above example can be invoked in `config.yml` as:
 
 ```yaml
 version: 2.1
@@ -99,7 +99,7 @@ workflows:
               overwrite: true
 ```
 
-If the same command were declared locally inside `config.yml` it would look something like:
+If the same command were declared locally inside `config.yml`, the command would look similar to the example shown below:
 
 ```yaml
 commands:
@@ -129,4 +129,3 @@ jobs:
           to: "s3://mybucket_uri"
           overwrite: true
 ```
-
