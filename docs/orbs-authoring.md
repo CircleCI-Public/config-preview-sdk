@@ -3,12 +3,12 @@ This document largely covers the tooling and flow of authoring and publishing yo
 
 Orbs can be authored [inline](inline-orbs.md) in your `config.yml` file or authored separately and then published to to the orb registry for reuse across projects. The main focus of this document is how to _publish_ orbs for use across projects. For developing inline orbs, check out the [Writing Inline Orbs](inline-orbs.md) document.
 
-### [WARNING] Orbs are always world-readable
+**[WARNING] Orbs are always world-readable**
 All published orbs can be read and used by anyone. They are _not_ limited to just the members of your organization.
 In general, we strongly recommend that you do not put secrets or other sensitive variables into your configuration. Instead, use contexts or project environment variables and reference the names of those environment variables in your orbs.
 
 ## Prerequisites
-To start orb publishing, you will need to opt-in to the new 3rd Party Software terms and turn on orb publishing for your organization. Only an organization admin can do this from the [organization Settings page](https://circleci.com/docs/2.0/settings/#organization-settings-page). On the Security tab you will find the form for opting in.
+To start orb publishing, you will need to opt-in to the new 3rd Party Software terms and turn on orb publishing for your organization. Only an organization admin can do this from the [organization Settings page](https://circleci.com/docs/2.0/settings/#organization-settings-page). On the "Security" tab you will find the form for opting in.
 
 ## Concepts in orb publishing
 
@@ -20,7 +20,7 @@ When orb features come to the server installation of CircleCI, each installation
 > NOTE: as of September 2018 the orb features are not yet supported on server installations (TODO: update this doc if orbs are now on server installs).
 
 ### Namespaces
-Namespaces are used to organize a set of orbs. Each namespace has a unique and immutable name within the registry, and each orb in a namespace has a unique name. For instance, the orb `circleci/rails` means the `rails` orb in the `circleci` namespace, which can coexist in the registry with an orb called `somenamespace/rails` because they are in separate namespaces. 
+Namespaces are used to organize a set of orbs. Each namespace has a unique and immutable name within the registry, and each orb in a namespace has a unique name. For instance, the orb `circleci/rails` means the `rails` orb in the `circleci` namespace may coexist in the registry with an orb called `somenamespace/rails` because they are in separate namespaces. 
 
 Namespaces are owned by organizations. Only organization administrators can create namespaces.
 
@@ -46,7 +46,7 @@ Development orbs are tagged with the format `dev:<< your-string >>`. Production 
 
 In development orbs, the string label given by the user has the following restrictions:
 
-Up to 1023 non-whitespace characters.
+* Up to 1023 non-whitespace characters.
 
 Examples of valid development orb tags:
 - Valid:
@@ -70,7 +70,7 @@ PATCH: when you make backwards-compatible bug fixes.
 ### Using orbs in orbs and register-time resolution
 You may use an `orbs` stanza inside an orb, providing a way to pull in other orbs' elements into your orb. The scoping rules are the same as orbs in configuration, and you declare inline orbs in an orb.
 
-NOTE that because production orb releases are immutable the system will resolve all orb dependencies at the time you register your orb rather than the time you run your build (eager resolution). For example, imagine you go to publish orb `foo/bar` at version `1.2.3`, and that orb you are publishing has, internally, an `orbs` stanza that imports another orb referenced as `biz/baz@volatile`. Let's imagine also that the latest version at the time you want to do this is `2.1.0`. At the time you register `foo/bar@1.2.3` the system will resolve `biz/baz@volatile` as the latest version and include its elements directly into the packaged version of `foo/bar@1.2.3`. Now imagine that afterwards `biz/baz` receives a new release that is now `3.0.0`. Anyone using `foo/bar@1.2.3` will not see the change in `biz/baz@3.0.0` until `foo/bar` is published at a higher version. 
+NOTE: Because production orb releases are immutable, the system will resolve all orb dependencies at the time you register your orb rather than the time you run your build (eager resolution). For example, imagine you go to publish orb `foo/bar` at version `1.2.3`, and that orb you are publishing has, internally, an `orbs` stanza that imports another orb referenced as `biz/baz@volatile`. Let's imagine also that the latest version at the time you want to do this is `2.1.0`. At the time you register `foo/bar@1.2.3` the system will resolve `biz/baz@volatile` as the latest version and include its elements directly into the packaged version of `foo/bar@1.2.3`. Now imagine that afterwards `biz/baz` receives a new release that is now `3.0.0`. Anyone using `foo/bar@1.2.3` will not see the change in `biz/baz@3.0.0` until `foo/bar` is published at a higher version. 
 
 ### Yanking production orbs
 In general, we prefer to never delete production orbs that were published as Open because it harms the reliability of the orb registry as a source of configuration, and the trust of all orb users. We recognize there are circumstances in which a production orb ought be deactivated and/or expunged. 
