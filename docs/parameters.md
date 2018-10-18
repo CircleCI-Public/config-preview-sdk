@@ -140,7 +140,7 @@ commands:
         enum: ["linux", "darwin", "win32"]
 ```        
 
-The following `enum` type decalration is invalid because the default is not declared in the enum list.
+The following `enum` type declaration is invalid because the default is not declared in the enum list.
 
 ```yaml
 commands:
@@ -152,3 +152,44 @@ commands:
         enum: ["darwin", "linux"]
 ```        
 
+### Executor
+
+Use an `executor` parameter to allow the invoker of a job to decide what
+executor it will run on.
+
+version: 2.1
+```yaml
+executors:
+  xenial:
+    parameters:
+      some-value:
+        type: string
+        default: foo
+    environment:
+      SOME_VAR: << parameters.some-value >>
+      docker:
+        - image: ubuntu:xenial
+  bionic:
+    environment:
+      docker:
+        - image: ubuntu:bionic
+
+jobs:
+  test:
+    parameters:
+      e:
+        type: executor
+    executor: << parameters.e >>
+    steps:
+      - run: some-tests
+
+workflows:
+  workflow:
+    jobs:
+      - test:
+          e: bionic
+      - test:
+          e:
+            name: xenial
+            some-value: foobar
+```
