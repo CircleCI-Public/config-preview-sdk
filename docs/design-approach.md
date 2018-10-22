@@ -5,7 +5,7 @@
 The configuration in CircleCI 2.0 is designed to be highly deterministic. As a result, the syntax proved in many cases to be much more verbose and prone to too much boiler plate and repeated code blocks. CircleCI aims to provide better ways avoid repetitive build configuration.
 
 2. **Code reuse across projects** 
-Many customers state that they want better ways to share configuration across projects. This repo introduces Orbs, whihc are reusable packages of parameterizable CircleCI configuration elements that can be added to the Orb registry for use across projects.
+Many customers state that they want better ways to share configuration across projects. This repo introduces Orbs, which are reusable packages of parameterizable CircleCI configuration elements that can be added to the Orb registry for use across projects.
 
 3. **Easier path to common configuration**
 Developers and customers also state that they want more off-the-shelf options to get their first useful builds flowing, especially for common platforms like Rails and Node. They want better encapsulation of common tasks like deploying to Heroku or pushing to an S3 bucket.
