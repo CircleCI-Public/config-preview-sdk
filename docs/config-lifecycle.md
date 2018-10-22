@@ -5,22 +5,18 @@ Configuration in CircleCI is sent to the platform as a valid YAML string that sh
 
 Once a project is created with configuration, each build is run from that source of configuration in the following ways:
 
-1. When a build is initiated via webhook from your project's main git repository or via the API, the first check is of authorization.
-The credentials associated with the build request must be able to execute against the project. If credentials do not pass the authorization screen, you will not receive any confirmation that the project is even valid. This is similar behavior to, for instance, the way GitHub serves a 404 in response to a request for a repository that you don't have access to, rather than acknowledge that the repository exists at all.
+1. When a build is initiated via webhook from your project's main git repository or via the API, the first check is of authorization. The credentials associated with the build request must be able to execute against the project. If credentials do not pass the authorization screen, you will not receive any confirmation that the project is even valid. This is similar behavior to the way GitHub serves a 404 error code in response to a request for a repository that you don't have access to, rather than acknowledge that the repository exists at all.
 
-2. If the build request passes authorization, the build increments the build number on the project and project configuration is retrieved from source based on the SHA1 of the commit (unless config is being passed in via the API).
-If your configuration cannot be retrieved the build will be failed and you will see a failed Build.
+2. If the build request passes authorization, the build increments the build number on the project and project configuration is retrieved from source based on the SHA1 of the commit (unless config is being passed in via the API). If your configuration cannot be retrieved, the build will be failed and you will see a failed Build.
 
 3. Configuration for the build is validated to ensure it parses as YAML and adheres to the CircleCI configuration schema (TODO: publish and link to the schema). If the configuration cannot be processed the build will fail, and you will see the resulting errors in the build.
 
 4. If configuration can be processed, all dynamic elements are resolved including orbs and inline commands and parameters. 
-If there are errors during orb and parameter resolution the build will be failed, and you will see errors related to config compilation on the build. 
+If there are errors during orb and parameter resolution, the build will be failed, and you will see errors related to config compilation on the build. 
 
-5. If the build configuration can be fully resolved, the build proceeds to workflow coordination.
-If your build configuration has only a single job a minimal workflow will be "wrapped" around your job automatically immediately prior to being passed to coordination.
+5. If the build configuration can be fully resolved, the build proceeds to workflow coordination. If your build configuration has only a single job, a minimal workflow will be "wrapped" around your job automatically immediately prior to being passed to coordination.
 
-6. Workflow coordination orchestrates the state of your build, sending execution jobs to their respective executor fleets, tracking the state of approval jobs, and resolving context security rules at job run time.
-Any problems at this layer can result in a failed workflow with error messages.
+6. Workflow coordination orchestrates the state of your build, sending execution jobs to their respective executor fleets, tracking the state of approval jobs, and resolving context security rules at job run time. Any problems at this layer can result in a failed workflow with error messages.
 
 7. Execution jobs can queue depending on the nature of your plan. Once taken off the queue:
  - The configuration of the job is passed to the build agent and is run in the executor specified in your job configuration.
