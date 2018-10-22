@@ -34,7 +34,7 @@ jobs:
       - run: echo outside the executor
 ```
 
-In the above example the executor `my-executor` is passed as the single value of the key `executor`. Alternatively, you can pass `my-executor` as the value of a `name` key under `executor` -- this method is primarily employed when passing parameters to executor invocations (see below):
+In the above example, the executor `my-executor` is passed as the single value of the key `executor`. Alternatively, you can pass `my-executor` as the value of a `name` key under `executor` -- this method is primarily employed when passing parameters to executor invocations (see below):
 
 ```yaml
 jobs:
@@ -46,7 +46,7 @@ jobs:
 ```
 
 ## Common uses of executors
-Executors in configuration were designed to enable:
+Executors in a configuration were designed to enable:
 1. Reusing a defined execution environment in multiple jobs in _config.yml_.
 2. Allowing an orb to define the executor used by all of its commands. This allows users to execute the commands of that orb in the execution environment defined by the orb's author.
 
@@ -58,7 +58,7 @@ Imagine you have several jobs that you need to run in the same Docker image and 
 2. Use YAML anchors to achieve some reuse.
 3. Declare an executor with the values you want, and invoke it in your jobs.
 
-With an executor declaration your configuration might look something like: 
+With an executor declaration your configuration might look something like the example shown below: 
 
 **Without executors**
 ```yaml
@@ -147,11 +147,10 @@ jobs:
     executor: baz-orb/bar  # prefixed executor
 ```
 
-Note that `foo-orb/bar` and `baz-orb/bar` are different executors. They
-both have the local name `bar` relative to their orbs, but the are independent executors living in different orbs.
+Note that `foo-orb/bar` and `baz-orb/bar` are different executors. They both have the local name `bar` relative to their orbs, but the are independent executors living in different orbs.
 
 ## Overriding keys when invoking an executor
-When invoking an executor in a `job` any keys in the job itself will override those of the executor invoked. For instance, if your job declares a `docker` stanza, it will be used, in its entirety, instead of the one in your executor.
+When invoking an executor in a `job`, any keys in the job itself will override those of the executor invoked. For example, if your job declares a `docker` stanza, it will be used, in its entirety, instead of the one in your executor.
 
 There is **one exception** to this rule: `environment` variable maps are additive. If an `executor` has one of the same `environment` variables as the `job`, the `job`'s value will win. For example, if you had the following configuration:
 
@@ -177,7 +176,6 @@ jobs:
       TESTS: unit
     working_directory: ~/tests
 ```
-
 
 This would resolve to:
 ```yaml
@@ -235,4 +233,3 @@ jobs:
     environment:
       MYPRECIOUS: "myspecialvalue"
 ```
-
