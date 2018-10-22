@@ -157,8 +157,8 @@ commands:
 Use an `executor` parameter to allow the invoker of a job to decide what
 executor it will run on.
 
-version: 2.1
 ```yaml
+version: 2.1
 executors:
   xenial:
     parameters:
@@ -167,12 +167,11 @@ executors:
         default: foo
     environment:
       SOME_VAR: << parameters.some-value >>
-      docker:
-        - image: ubuntu:xenial
+    docker:
+      - image: ubuntu:xenial
   bionic:
-    environment:
-      docker:
-        - image: ubuntu:bionic
+    docker:
+      - image: ubuntu:bionic
 
 jobs:
   test:
