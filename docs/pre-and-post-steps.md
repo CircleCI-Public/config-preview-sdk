@@ -1,23 +1,15 @@
 # Pre and post steps
 _The keys `pre-steps` and `post-steps` in jobs are available in configuration version 2.1 and later_
 
-All jobs accept two special arguments of type `steps`: `pre-steps` and
-`post-steps`.
+All jobs accept two special arguments of type `steps`: `pre-steps` and `post-steps`.
 
-If an orb user invokes a job with one or both of these arguments,
-the job will run the steps in `pre-steps` first, before any other steps run, and
-then it will run the steps in `post-steps` last, after any other steps run.
+If an orb user invokes a job with one or both of these arguments, the job will run the steps in `pre-steps` first, before any other steps run, and then it will run the steps in `post-steps` last, after any other steps run.
 
 ## Motivation
 
-Pre- and post- steps allow users to be execute steps in a given job's environment
-without modifying the orb. This is useful, for example, when a user imports a job
-and wants to upload assets after it completes, or to run some custom setup steps
-before job execution. Pre- and post- steps allow the user to make these additions
-without modifying the imported job.
+Pre- and post- steps allow users to execute steps in a given job's environment without modifying the orb. This is useful when a user imports a job and wants to upload assets after it completes, or to run some custom setup steps before job execution. Pre- and post- steps allow the user to make these additions without modifying the imported job.
 
-A `steps` parameter can be used for a similar purpose, passing steps into a job,
-but it requires that the job be modified with an execution site for the parameter.
+A `steps` parameter can be used for a similar purpose, passing steps into a job, but it requires that the job be modified with an execution site for the parameter.
 
 ## Example of using pre- and post-steps
 
