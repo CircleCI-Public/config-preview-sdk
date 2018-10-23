@@ -77,7 +77,7 @@ workflows:
 
 ## Parameter scope
 
-Parameters are in-scope only within the job or command that defined them. If you want a job or command to pass its parameters to a command it invokes, theese parameters must be passed explicitly.
+Parameters are in-scope only within the job or command that defined them. If you want a job or command to pass its parameters to a command it invokes, these parameters must be passed explicitly.
 
 ```yaml
 version: 2.1
