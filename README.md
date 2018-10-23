@@ -1,39 +1,16 @@
-# CircleCI Build Processing & 2.1 Configuration (Preview)
+# CircleCI Orbs (Preview)
 
-## Getting Started
-You can turn on build processing at the bottom of the "Advanced" section of your project's settings. If you don't see this setting, it should appear in the next few days for you as we roll it out to more and more organizations.
+## NOTE OCT 2018
+We have moved the documentation for the new 2.1 features that are NOT about orbs specifically to our main docs site:
+[https://circleci.com/docs/2.0/reusing-config/](https://circleci.com/docs/2.0/reusing-config/)
 
-Note that if you are turning on build processing to use the new 2.1 configuration features you will want to read [the getting started section](https://github.com/CircleCI-Public/config-preview-sdk/blob/master/docs/getting-started.md) of the [docs on the new configuration features](https://github.com/CircleCI-Public/config-preview-sdk/blob/master/docs/README.md).
+## Getting Started with Orbs Preview
 
-You should also consider upgrading your `circleci` CLI to the new version. To do so, follow the instructions on the [circleci-cli repository](https://github.com/CircleCI-Public/circleci-cli/blob/master/README.md) for upgrading if you already have `circleci` installed, or installing from scratch if you haven't yet installed it.
+Be sure to start with the [docs](/docs/README.md).
 
-## Why turn on build processing?
-We will soon turn on build processing for all CircleCI 2.0 builds, but we are providing this opt-in period to provide earlier access to some new features that build processing will enable and to help us make transitions to the new system more gradual and less risky.
+Also, you'll need to be sure to use the new [Build Processing setting](https://circleci.com/docs/2.0/build-processing/) on your projects.
 
-The new build processing feature enables the following:
-
-1. Use of the [new configuration version 2.1 features](docs/whats-new.md)
-2. Use of the new [API endpoint to trigger builds with workflows](https://circleci.com/docs/api/v1-reference/#new-project-build)
-3. Auto-cancelation of redundant builds containing workflows.
-
-A few highlight links to get going:
-
-* [What's new in version 2.1 of configuration](docs/whats-new.md).
-* [Docs on new version 2.1 configuration features](docs/README.md)
-* [Design of the new build processing system](docs/design-approach.md)
-
-## IMPORTANT: Preview Caveats
-We are committed to achieving backwards compatibility in almost all cases, and we expect for most projects turning on build processing will have no effect on existing builds. Please let us know if you experience breaking builds that worked before you turned on build processing but broke once you turned it on.  
-
-We are considering the new build processing system in preview until we have solved (crossed off) all of the following use cases (all of which are under development or slated soon as of August 2018):
-
-* ~Builds can use the 2.1 config features~
-* ~Works with GitHub webhooks~
-* ~New API endpoint to trigger builds, including running all workflows in the build~
-* ~All jobs run inside a Workflow part 1: workflow auto-wrapping for jobs called `build`~
-* ~Solve for full BitBucket support - API and webhooks~
-* ~Auto-cancel redundant builds (including workflows)~
-* ~Solve UI for Rerun of a job (rerun the workflow of the job)~
+Finally, be sure to get the new [circleci CLI](https://github.com/CircleCI-Public/circleci-cli/) or upgrade if you already have `circleci` installed.
 
 ## IMPORTANT: 2.1 Configuration Caveats
 With the introduction of build processing we are making available version 2.1 of build configuration.
@@ -51,10 +28,7 @@ There are two ways to stay up-to-date with changes we make to our new configurat
 2. Get email updates from us about the configuration preview: [https://circle.ci/2HbCmKq](https://circle.ci/2HbCmKq).
 
 ## Giving Feedback
-1. Come to [CircleCI Discuss](https://discuss.circleci.com/t/2-1-config-and-build-processing/24102) to post feedback.
-2. Tweet @circleci with thoughts
-3. Add [issues](https://github.com/CircleCI-Public/config-preview-sdk/issues) to this repo.
-4. Vote or add to our [Ideas board](https://circleci.com/ideas/)
+Add [issues](https://github.com/CircleCI-Public/config-preview-sdk/issues) to this repo.
 
 ## Documentation
 The [docs](/docs/) in this repository cover the details of the new configuration features. 

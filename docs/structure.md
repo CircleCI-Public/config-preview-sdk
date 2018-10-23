@@ -5,13 +5,13 @@ Orbs are authored with similar YAML syntax to the base CircleCI build configurat
 ## Anatomy of an orb
 Orbs are composed of one or more of the following elements, each of which represents a type of invocable element in CircleCI project configuration:
 
-* `description` (a string)
+* `version: 2.1`
+* `description: (string value)`
 * [commands](commands.md)
 * [jobs](jobs.md)
 * [executors](executors.md)
 * [orbs](inline-orbs.md)
-
-Additionally, [usage examples](usage-examples.md) may also be provided for documentation purposes.
+* [examples](usage-examples.md)
 
 An example orb:
 ```yaml
@@ -28,7 +28,7 @@ jobs:
       - echo
 ```
 
-Note that the example Orb shown above has a single command name `echo` and a single job named `hello`.
+Note that the example orb shown above has a single command name `echo` and a single job named `hello`.
 
 ### Naming
 

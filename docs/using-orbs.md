@@ -9,26 +9,25 @@ Importing a set of orbs might look like:
 
 ```yaml
 orbs:
-  rails: circleci/rails@1.13.3
-  python: circleci/python@2.1
+  slack: circleci/slack@0.1.0
   heroku: circleci/heroku@volatile
 ```
 
-The above would make three orbs available, one for each key in the map and named the same as the keys in the map. 
+The above would make two orbs available, one for each key in the map and named the same as the keys in the map.
 
-You may also write [inline orbs](inline-orbs.md), which may be especially useful during development of a new orb. Because the values of the above keys under `orbs` are all scalar values they are assumed to be imports based on the orb URI format.
+Because the values of the above keys under `orbs` are all scalar values they are assumed to be imports based on the orb ref format of `${NAMESPACE}/${ORB_NAME}@${VERSION}`
+
+You may also write [inline orbs](inline-orbs.md), which may be especially useful during development of a new orb.
 
 ## Certified orbs vs. 3rd party orbs
-Certified orbs are those that CircleCI has built or has reviewed and approved as part of the features of the CircleCI platform. Any project may use certified orbs in configuration version 2.1 and higher. 
+Certified orbs are those that CircleCI has built or has reviewed and approved as part of the features of the CircleCI platform. Any project may use certified orbs in configuration version 2.1 and higher.
 
-3rd party orbs are those published by our customers and other members of our community. For you to publish orbs, or for your projects to use 3rd party orbs, your organization must opt-in under SECURITY within the Organization Settings page under the section "Orb Security Settings" where an organization administrator must agree to the terms for using 3rd party software (NOTE: if you do not yet see this feature under your organization settings you should in the next few weeks as we roll it out gradually). This setting can only be toggled by organization administrators.
+3rd party orbs are those published by our customers and other members of our community. For you to publish orbs or for your projects to use 3rd party orbs, your organization must opt-in under SECURITY within the Organization Settings page under the section "Orb Security Settings" where an organization administrator must agree to the terms for using 3rd-party software. NOTE: This setting can only be toggled by organization administrators.
 
-## Orb URI format
-Orb URIs have the format:
+## Orb ref format
+Orb refs have the format:
 
 `[namespace]/[orb]@[version]`
-
-Orb namespaces may have restrictions that prevent you from accessing orbs in those namespaces based on whether the build and the scope of the namespace are congruent.
 
 ## Semantic versioning in orbs
 Orbs are published with the standard 3-number [semantic versioning system](https://semver.org/), `major.minor.patch`, and orb authors need to adhere to semantic versioning. Within `config.yml`, you may specify wildcard version ranges to resolve orbs. You may also use the special string `volatile` to pull in whatever the highest version number is at time your build runs. For instance, when `mynamespace/some-orb@8.2.0` exists, and `mynamespace/some-orb@8.1.24` and `mynamespace/some-orb@8.0.56` are published after `8.2.0`, volatile will still refer to `mynamespace/some-orb@8.2.0` as the highest semver.
@@ -43,6 +42,6 @@ Examples of orb version declarations and their meaning:
 ### Using dev versions
 While all production orbs must be published securely by organization admins, dev orbs allow your team broader latitude. See the [Orb authoring and publishing doc](orbs-authoring.md) for more information on how you can create your own dev orbs.
 
-A dev version must be referenced entirely, like `mynamespace/myorb@dev:mybranch`. Whereas production orbs allow wildcard semver references, there are no shorthand conveniences for dev versions. 
+A dev version must be referenced entirely, like `mynamespace/myorb@dev:mybranch`. Whereas production orbs allow wildcard semver references, there are no  wildcards in dev versions.
 
-IMPORTANT NOTE: Dev versions are mutable and expire: their contents can change, and they are subject to deletion after 90 days, so we strongly recommend you do not rely on a dev versions in any production software.
+IMPORTANT NOTE: **Dev versions are mutable and expire.** Their contents can be changed by other members of your organization, and they are subject to deletion after 90 days, so we strongly recommend you do not rely on a dev versions in any production software and use them only while developing your orb.

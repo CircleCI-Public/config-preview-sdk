@@ -14,11 +14,11 @@ If you are providing commands, try to provide one or more executors in which the
 ### Name things concisely
 Remember that use of your commands and jobs is always contextual to your orb, so you can use general names like "run-tests" in most cases.
 
-### Required vs. Optional parameters
+### Required vs. optional parameters
 Try to provide sound default values of parameters whenever possible.
 
 ### Job-only orbs are inflexible
 While sometimes appropriate, it can be frustrating for users to not be able to use the commands in their own jobs. Pre and post steps when invoking jobs are a work-around for users on this front.
 
-### Parameter `steps` are powerful
+### Parameter `steps` are powerful for orb users
 Wrapping steps provided by the user allows you to encapsulate and sugar things like caching strategies and other more complex tasks, providing a lot of value to users. Read more about this [here](parameters.md#steps).

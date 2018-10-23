@@ -7,6 +7,26 @@ Orbs can be authored [inline](inline-orbs.md) in your `config.yml` file or autho
 All published orbs can be read and used by anyone. They are _not_ limited to just the members of your organization.
 In general, we strongly recommend that you do not put secrets or other sensitive variables into your configuration. Instead, use contexts or project environment variables and reference the names of those environment variables in your orbs.
 
+## Quick start
+The high-level steps one will take to publish their first orb:
+
+1. Claim a namespace (assuming you don't yet have one), eg:
+> `circleci namespace create sandbox github CircleCI-Public`
+2. Create the orb inside your namespace, eg:
+> `circleci orb create sandbox/hello-world`
+3. Create the content of your orb in a file. You will generally do this in your code editor in a git repo made for your orb, but for the sake of example was assume a file in `/temp/orb.yml` could be made with a bare-bones orb like:
+> `echo '{version: "2.1", description: "a sample orb"}' > /usr/tmp/orb.yml`
+4. Validate that your code is a valid orb using the CLI. For example, using the path above you could use:
+> `circleci orb validate /tmp/orb.yml`
+5. Publish a dev version of your orb. Assuming the above orb that would look like:
+> `circleci orb publish /tmp/orb.yml sandbox/hello-world@dev:first`
+6. Once you are ready to push your orb to production, you can publish it manually using `circleci orb publish` or promote it directly from the dev version. In the case of the above, assuming you wanted to increment the new dev version to become 0.0.1 you can use:
+> `circleci orb publish promote sandbox/hello-world@dev:first patch`
+7. Your orb is now published in an immutable form as a production version and can be used safely in builds. You can pull the source of your orb using:
+> `circleci orb source sandbox/hello-world@0.0.1`
+
+Below are more details on orb publishing.
+
 ## Prerequisites
 To start orb publishing, you will need to opt-in to the new 3rd Party Software terms and turn on orb publishing for your organization. Only an organization admin can do this from the [organization Settings page](https://circleci.com/docs/2.0/settings/#organization-settings-page). On the "Security" tab you will find the form for opting in.
 

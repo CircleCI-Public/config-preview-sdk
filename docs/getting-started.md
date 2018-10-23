@@ -1,4 +1,4 @@
-# Getting started
+# Getting started with orbs
 
 ## 1. Ensure that build processing is enabled
 As of September 2018 any new projects already have this enabled.
