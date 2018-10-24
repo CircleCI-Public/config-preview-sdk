@@ -39,18 +39,18 @@ version: 2.1
 
 executors:
   default:
-  	parameters:
-    	tag:
-      	type: string
+    parameters:
+      tag:
+        type: string
         default: "curl-browsers"
       docker:
         - image:  circleci/buildpack-deps:<< parameters.tag >>
 
 jobs:
   hello-build:
-  	executor: default
+    executor: default
     steps:
-    	- run: echo "Hello, build!"
+      - run: echo "Hello, build!"
 ```
 
 2. Validate it with `circleci orb validate src/orb.yml`.
