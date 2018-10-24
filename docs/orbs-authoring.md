@@ -14,7 +14,7 @@ The high-level steps one will take to publish their first orb:
 > `circleci namespace create sandbox github CircleCI-Public`
 2. Create the orb inside your namespace, eg:
 > `circleci orb create sandbox/hello-world`
-3. Create the content of your orb in a file. You will generally do this in your code editor in a git repo made for your orb, but for the sake of example was assume a file in `/tmp/orb.yml` could be made with a bare-bones orb like:
+3. Create the content of your orb in a file. You will generally do this in your code editor in a git repo made for your orb, but, for the sake of example, let's assume a file in `/tmp/orb.yml` could be made with a bare-bones orb like:
 > `echo '{version: "2.1", description: "a sample orb"}' > /tmp/orb.yml`
 4. Validate that your code is a valid orb using the CLI. For example, using the path above you could use:
 > `circleci orb validate /tmp/orb.yml`
