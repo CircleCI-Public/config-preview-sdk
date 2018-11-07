@@ -36,7 +36,7 @@ A parameter can have the following keys as immediate children:
 | Key Name    | Description                                                                                   | Default value |
 |-------------|-----------------------------------------------------------------------------------------------|---------------|
 | description | Optional. Used to generate documentation for your orb.                                        | N/A           |
-| type        | Required. Currently "string", "boolean", "enum", and "steps" are supported.                           | N/A           |
+| type        | Required. Currently "string", "boolean", "enum", "executor" and "steps" are supported.                           | N/A           |
 | default     | The default value for the parameter. If not present, the parameter is implied to be required. | N/A           |
 
 ## Parameter types
