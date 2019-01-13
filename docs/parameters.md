@@ -1,9 +1,9 @@
-# Using Parameters in CircleCI Configuration Elements
+# Using parameters in CircleCI configuration elements
 _The `parameters` declaration is available in configuration version 2.1 and later._
 
 Many config elements can be authored to be invocable in your `config.yml` file with specified parameters. Parameters are declared by name as the keys in a map that are all immediate children of the `parameters` key under a job, command, or executor. 
 
-For instance, the following shows declaring a parameter `foo` in the definition of a command `bar`:
+For example, the example below shows how you can declare a parameter `foo` in the definition of a command `bar`:
 
 ```yaml
 commands:
@@ -18,7 +18,7 @@ commands:
       - run: echo '<< parameters.foo >>'
 ```
 
-In the above example a value for the parameter `foo` can be passed when invoking the command. For instance, passing the parameter `foo` would look something like:
+In this example, a value for the parameter `foo` is passed when invoking the command. When you pass the parameter `foo` , you will see the following:
 
 ```yaml
 jobs:
@@ -36,16 +36,16 @@ A parameter can have the following keys as immediate children:
 | Key Name    | Description                                                                                   | Default value |
 |-------------|-----------------------------------------------------------------------------------------------|---------------|
 | description | Optional. Used to generate documentation for your orb.                                        | N/A           |
-| type        | Required. Currently "string", "boolean", "enum", and "steps" are supported                           | N/A           |
+| type        | Required. Currently "string", "boolean", "enum", and "steps" are supported.                           | N/A           |
 | default     | The default value for the parameter. If not present, the parameter is implied to be required. | N/A           |
 
-## Parameter Types
+## Parameter types
 
-This section describes the 
+This section describes the types of parameters that can be used.
 
 ### String
 
-Basic string parameters
+Basic string parameters look similar to the following:
 
 ```yaml
 commands:
@@ -56,7 +56,7 @@ commands:
         type: string
         default: docs
     steps:
-      - cp *.md << destination >>
+      - cp *.md << parameters.destination >>
 ```
 
 Strings should be quoted if they would otherwise represent another type (such as boolean or number) or if they contain characters that have special meaning in yaml. In all other instances, quotes are optional.
@@ -74,7 +74,7 @@ commands:
         type: boolean
         default: false
     steps:
-      - ls <<# all >> -a <</ all >>
+      - ls <<# parameters.all >> -a <</ parameters.all >>
 ```
 
 Boolean parameter evaluation is based on the [values specified in YAML 1.1][http://yaml.org/type/bool.html]:
@@ -86,7 +86,7 @@ Capitalized and uppercase versions of the above values are also valid.
 
 ### Steps
 
-Used when you have a job or command that needs to mix predefined and user-defined steps. When passed in to a command or job invocation, the steps passed as parameters are always defined as an array, even if only one step is provided.
+Steps are used when you have a job or command that needs to mix predefined and user-defined steps. When passed into a command or job invocation, the steps passed as parameters are always defined as an array, even if only one step is provided.
 
 ```yaml
 commands:
@@ -140,7 +140,7 @@ commands:
         enum: ["linux", "darwin", "win32"]
 ```        
 
-The following `enum` type decalration is invalid because the default is not declared in the enum list.
+The following `enum` type declaration is invalid because the default is not declared in the enum list.
 
 ```yaml
 commands:
@@ -152,3 +152,44 @@ commands:
         enum: ["darwin", "linux"]
 ```        
 
+### Executor
+
+Use an `executor` parameter to allow the invoker of a job to decide what
+executor it will run on.
+
+version: 2.1
+```yaml
+executors:
+  xenial:
+    parameters:
+      some-value:
+        type: string
+        default: foo
+    environment:
+      SOME_VAR: << parameters.some-value >>
+      docker:
+        - image: ubuntu:xenial
+  bionic:
+    environment:
+      docker:
+        - image: ubuntu:bionic
+
+jobs:
+  test:
+    parameters:
+      e:
+        type: executor
+    executor: << parameters.e >>
+    steps:
+      - run: some-tests
+
+workflows:
+  workflow:
+    jobs:
+      - test:
+          e: bionic
+      - test:
+          e:
+            name: xenial
+            some-value: foobar
+```

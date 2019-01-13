@@ -1,0 +1,98 @@
+# Testing orbs
+CircleCI is still working on some tooling around testing; however, a few different types of testing you can persform are described below.
+
+## Schema Validation
+To test whether an orb is valid YAML and passes a schema, use `circleci orb validate` with the CircleCI CLI.
+
+For example: Given an orb with source at `./src/orb.yml` running either:
+
+- `circleci orb validate ./src/orb.yml` _or_
+- `cat ./src/orb.yml | circleci orb validate -`
+
+will either let you know that the orb is valid, or return the first schema violation it encounters.
+
+CircleCI has an early version of an `orb-tools` orb that contains a few handy jobs. You  can see the config of an orb that uses `orb-tools` to do rudimentary testing for validity [here](https://github.com/CircleCI-Public/hello-orb/blob/master/.circleci/config.yml)
+
+## Expansion Testing
+The next level of testing checks that an orb is expanding to generate the desired final `config.yml` consumed by our system.
+
+This testing is best completed by either publishing the orb as a `dev` version and then using it in your config and processing that config, or developing it as an inline orb and then processing that and comparing it to the expanded state you expect.
+
+#### For Example -
+Assuming that a valid namespace and orb have already been created with the CLI, perform the following steps:
+
+1. start with a simple orb in `src/orb.yml`
+
+```yaml
+version: 2.1
+
+executors:
+  default:
+  	parameters:
+    	tag:
+      	type: string
+        default: "curl-browsers"
+      docker:
+        - image:  circleci/buildpack-deps:<< parameters.tag >>
+
+jobs:
+  hello-build:
+  	executor: default
+    steps:
+    	- run: echo "Hello, build!"
+```
+
+2. Validate it with `circleci orb validate src/orb.yml`.
+
+3. Publish a `dev` version with `circleci orb publish src/orb.yml namespace/orb@dev:0.0.1`.
+
+4. Include that orb in `.circleci/config.yml`:
+
+```yaml
+version: 2.1
+
+orbs:
+  hello: namespace/orb@dev:0.0.1
+
+workflows:
+  hello-workflow:
+    jobs:
+      - hello/hello-build
+```
+
+5. After running `circleci config process .circleci/config.yml` the expected result would be:
+
+```yaml
+version: 2
+jobs:
+  hello/hello-build:
+    docker:
+      - image: circleci/buildpack-deps:curl-browsers
+    steps:
+      - run:
+          command: echo "Hello, build!"
+workflows:
+  hello-workflow:
+    jobs:
+      - hello/hello-build
+  version: 2
+
+# Original config.yml file:
+# version: 2.1
+#
+# orbs:
+#   hello: namespace\/orb@dev:0.0.1
+#
+# workflows:
+#   hello-workflow:
+#     jobs:
+#       - hello\/hello-build
+```
+
+Tooling around expansion testing is something CircleCI is actively working to improve.
+
+## Integration testing
+
+Integration testing involves running active builds with orbs. Today, the only ways to perform integration tests requires you to either develop the orb inline in a build that uses it and run that build, or publish the orb in one place (either from your CLI or in a separate build) and then have another project that uses that published orb.
+
+For example, you may have a repo with your orb that has a build which publishes it to `dev:${CIRCLE_BRANCH}` and a separate project that pulls in your orb as `yournamespace/yourorb@dev:master` (assuming you pull in your master branch for testing) and runs whatever runtime tests you wish. If the runtime tests are successful, you can either publish a production version of the orb manually from your CLI or automate that in the build.

@@ -1,4 +1,4 @@
-# Authoring and using Executors 
+# Authoring and using executors 
 _Reusable `executor` declarations are available in configuration version 2.1 and later_
 
 - [What _is_ an executor?](#what-is-an-executor)
@@ -236,3 +236,8 @@ jobs:
       MYPRECIOUS: "myspecialvalue"
 ```
 
+## Using executors as parameters
+
+You can also use executors as parameters themselves--for example if you'd like
+to define a single job and call it with several different executors. For more,
+see the [parameter docs](parameters.md)
